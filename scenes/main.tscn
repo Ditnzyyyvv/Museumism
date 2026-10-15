@@ -1,7 +1,7 @@
-[gd_scene load_steps=90 format=3]
+[gd_scene format=3 uid="uid://2vsh1wdt0m4i"]
 
 [ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
-[ext_resource type="Script" path="res://scripts/interactable.gd" id="2_interactable"]
+[ext_resource type="Script" uid="uid://f15s66j4usbb" path="res://scripts/interactable.gd" id="2_interactable"]
 [ext_resource type="PackedScene" path="res://scenes/door.tscn" id="3_door"]
 
 [sub_resource type="Environment" id="Environment_museum"]
@@ -9,7 +9,6 @@ background_mode = 1
 background_color = Color(0.05, 0.05, 0.07, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.42, 0.44, 0.48, 1)
-ambient_light_energy = 1.0
 tonemap_mode = 2
 glow_enabled = true
 glow_intensity = 0.5
@@ -17,176 +16,56 @@ glow_bloom = 0.2
 
 [sub_resource type="StandardMaterial3D" id="Mat_HallFloor"]
 albedo_color = Color(0.12, 0.12, 0.15, 1)
-roughness = 0.2
 metallic = 0.15
+roughness = 0.2
+
+[sub_resource type="BoxMesh" id="Mesh_MainFloor"]
+material = SubResource("Mat_HallFloor")
+size = Vector3(46, 1, 54)
+
+[sub_resource type="BoxShape3D" id="Shape_MainFloor"]
+size = Vector3(46, 1, 54)
 
 [sub_resource type="StandardMaterial3D" id="Mat_RunnerCarpet"]
 albedo_color = Color(0.55, 0.08, 0.12, 1)
 roughness = 0.85
 
+[sub_resource type="BoxMesh" id="Mesh_Carpet"]
+material = SubResource("Mat_RunnerCarpet")
+size = Vector3(2.6, 0.02, 50)
+
 [sub_resource type="StandardMaterial3D" id="Mat_Ceiling"]
 albedo_color = Color(0.13, 0.13, 0.16, 1)
 roughness = 0.9
+
+[sub_resource type="BoxMesh" id="Mesh_MainCeiling"]
+material = SubResource("Mat_Ceiling")
+size = Vector3(46, 0.6, 54)
 
 [sub_resource type="StandardMaterial3D" id="Mat_Wall"]
 albedo_color = Color(0.92, 0.91, 0.88, 1)
 roughness = 0.85
 
-[sub_resource type="StandardMaterial3D" id="Mat_Beam"]
-albedo_color = Color(0.1, 0.1, 0.12, 1)
-metallic = 0.6
-roughness = 0.35
-
-[sub_resource type="StandardMaterial3D" id="Mat_GoldTrim"]
-albedo_color = Color(0.92, 0.78, 0.32, 1)
-metallic = 0.9
-roughness = 0.2
-
-[sub_resource type="StandardMaterial3D" id="Mat_BlackFrame"]
-albedo_color = Color(0.06, 0.06, 0.08, 1)
-metallic = 0.7
-roughness = 0.25
-
-[sub_resource type="StandardMaterial3D" id="Mat_BlankCanvas"]
-albedo_color = Color(0.96, 0.95, 0.93, 1)
-roughness = 0.7
-
-[sub_resource type="StandardMaterial3D" id="Mat_Pedestal"]
-albedo_color = Color(0.94, 0.94, 0.96, 1)
-roughness = 0.18
-metallic = 0.05
-
-[sub_resource type="StandardMaterial3D" id="Mat_Wood"]
-albedo_color = Color(0.26, 0.16, 0.11, 1)
-roughness = 0.35
-
-[sub_resource type="StandardMaterial3D" id="Mat_Lectern"]
-albedo_color = Color(0.18, 0.14, 0.12, 1)
-metallic = 0.4
-roughness = 0.3
-
-[sub_resource type="StandardMaterial3D" id="Mat_Portal_Walle"]
-albedo_color = Color(0.06, 0.08, 0.18, 1)
-roughness = 0.4
-
-[sub_resource type="StandardMaterial3D" id="Mat_Arch_Walle"]
-albedo_color = Color(0.0, 0.85, 1.0, 1)
-emission_enabled = true
-emission = Color(0.0, 0.85, 1.0, 1)
-emission_energy_multiplier = 2.2
-
-[sub_resource type="StandardMaterial3D" id="Mat_Portal_SilentVoice"]
-albedo_color = Color(0.95, 0.84, 0.88, 1)
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="Mat_Arch_SilentVoice"]
-albedo_color = Color(0.92, 0.55, 0.68, 1)
-emission_enabled = true
-emission = Color(0.92, 0.55, 0.68, 1)
-emission_energy_multiplier = 1.2
-
-[sub_resource type="StandardMaterial3D" id="Mat_Portal_KimiNiTodoke"]
-albedo_color = Color(0.96, 0.91, 0.85, 1)
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="Mat_Arch_KimiNiTodoke"]
-albedo_color = Color(1.0, 0.82, 0.35, 1)
-metallic = 0.8
-roughness = 0.2
-emission_enabled = true
-emission = Color(1.0, 0.82, 0.35, 1)
-emission_energy_multiplier = 1.2
-
-[sub_resource type="StandardMaterial3D" id="Mat_Portal_Josee"]
-albedo_color = Color(0.06, 0.18, 0.32, 1)
-roughness = 0.4
-
-[sub_resource type="StandardMaterial3D" id="Mat_Arch_Josee"]
-albedo_color = Color(0.0, 0.75, 0.95, 1)
-metallic = 0.8
-roughness = 0.2
-emission_enabled = true
-emission = Color(0.0, 0.75, 0.95, 1)
-emission_energy_multiplier = 1.8
-
-[sub_resource type="StandardMaterial3D" id="Mat_WalleYellow"]
-albedo_color = Color(0.88, 0.68, 0.18, 1)
-roughness = 0.35
-metallic = 0.3
-
-[sub_resource type="StandardMaterial3D" id="Mat_WalleEyes"]
-albedo_color = Color(0.3, 0.85, 1.0, 1)
-emission_enabled = true
-emission = Color(0.3, 0.85, 1.0, 1)
-emission_energy_multiplier = 2.5
-
-[sub_resource type="StandardMaterial3D" id="Mat_PlantGreen"]
-albedo_color = Color(0.2, 0.88, 0.25, 1)
-emission_enabled = true
-emission = Color(0.2, 0.88, 0.25, 1)
-emission_energy_multiplier = 1.5
-
-[sub_resource type="StandardMaterial3D" id="Mat_ZenWater"]
-albedo_color = Color(0.2, 0.75, 0.85, 1)
-roughness = 0.05
-emission_enabled = true
-emission = Color(0.15, 0.6, 0.7, 1)
-emission_energy_multiplier = 0.8
-
-[sub_resource type="StandardMaterial3D" id="Mat_SakuraPetals"]
-albedo_color = Color(1.0, 0.72, 0.82, 1)
-roughness = 0.4
-
-[sub_resource type="StandardMaterial3D" id="Mat_JoseeRed"]
-albedo_color = Color(0.7, 0.16, 0.2, 1)
-roughness = 0.4
-
-[sub_resource type="StandardMaterial3D" id="Mat_Chrome"]
-albedo_color = Color(0.92, 0.93, 0.96, 1)
-metallic = 1.0
-roughness = 0.1
-
-[sub_resource type="StandardMaterial3D" id="Mat_OceanBlue"]
-albedo_color = Color(0.08, 0.45, 0.78, 1)
-emission_enabled = true
-emission = Color(0.08, 0.45, 0.78, 1)
-emission_energy_multiplier = 0.8
-
-[sub_resource type="BoxMesh" id="Mesh_MainFloor"]
-material = SubResource("Mat_HallFloor")
-size = Vector3(46.0, 1.0, 54.0)
-
-[sub_resource type="BoxShape3D" id="Shape_MainFloor"]
-size = Vector3(46.0, 1.0, 54.0)
-
-[sub_resource type="BoxMesh" id="Mesh_Carpet"]
-material = SubResource("Mat_RunnerCarpet")
-size = Vector3(2.6, 0.02, 50.0)
-
-[sub_resource type="BoxMesh" id="Mesh_MainCeiling"]
-material = SubResource("Mat_Ceiling")
-size = Vector3(46.0, 0.6, 54.0)
-
 [sub_resource type="BoxMesh" id="Mesh_OuterWall_EW"]
 material = SubResource("Mat_Wall")
-size = Vector3(46.0, 5.5, 0.6)
+size = Vector3(46, 5.5, 0.6)
 
 [sub_resource type="BoxShape3D" id="Shape_OuterWall_EW"]
-size = Vector3(46.0, 5.5, 0.6)
+size = Vector3(46, 5.5, 0.6)
 
 [sub_resource type="BoxMesh" id="Mesh_OuterWall_NS"]
 material = SubResource("Mat_Wall")
-size = Vector3(0.6, 5.5, 54.0)
+size = Vector3(0.6, 5.5, 54)
 
 [sub_resource type="BoxShape3D" id="Shape_OuterWall_NS"]
-size = Vector3(0.6, 5.5, 54.0)
+size = Vector3(0.6, 5.5, 54)
 
 [sub_resource type="BoxMesh" id="Mesh_RoomDivider"]
 material = SubResource("Mat_Wall")
-size = Vector3(18.0, 5.5, 0.5)
+size = Vector3(18, 5.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="Shape_RoomDivider"]
-size = Vector3(18.0, 5.5, 0.5)
+size = Vector3(18, 5.5, 0.5)
 
 [sub_resource type="BoxMesh" id="Mesh_HallWall_Seg1"]
 material = SubResource("Mat_Wall")
@@ -197,10 +76,10 @@ size = Vector3(0.5, 5.5, 14.2)
 
 [sub_resource type="BoxMesh" id="Mesh_DoorLintel"]
 material = SubResource("Mat_Wall")
-size = Vector3(0.5, 2.0, 3.6)
+size = Vector3(0.5, 2, 3.6)
 
 [sub_resource type="BoxShape3D" id="Shape_DoorLintel"]
-size = Vector3(0.5, 2.0, 3.6)
+size = Vector3(0.5, 2, 3.6)
 
 [sub_resource type="BoxMesh" id="Mesh_HallWall_Seg2"]
 material = SubResource("Mat_Wall")
@@ -216,44 +95,50 @@ size = Vector3(0.5, 5.5, 14.2)
 [sub_resource type="BoxShape3D" id="Shape_HallWall_Seg3"]
 size = Vector3(0.5, 5.5, 14.2)
 
-[sub_resource type="BoxMesh" id="Mesh_Arch_Walle"]
-material = SubResource("Mat_Arch_Walle")
-size = Vector3(0.12, 3.6, 4.0)
+[sub_resource type="StandardMaterial3D" id="Mat_Lectern"]
+albedo_color = Color(0.18, 0.14, 0.12, 1)
+metallic = 0.4
+roughness = 0.3
 
-[sub_resource type="BoxMesh" id="Mesh_Arch_SilentVoice"]
-material = SubResource("Mat_Arch_SilentVoice")
-size = Vector3(0.12, 3.6, 4.0)
+[sub_resource type="BoxMesh" id="Mesh_LecternStand"]
+material = SubResource("Mat_Lectern")
+size = Vector3(0.7, 1, 0.4)
 
-[sub_resource type="BoxMesh" id="Mesh_Arch_KimiNiTodoke"]
-material = SubResource("Mat_Arch_KimiNiTodoke")
-size = Vector3(0.12, 3.6, 4.0)
+[sub_resource type="StandardMaterial3D" id="Mat_GoldTrim"]
+albedo_color = Color(0.92, 0.78, 0.32, 1)
+metallic = 0.9
+roughness = 0.2
 
-[sub_resource type="BoxMesh" id="Mesh_Arch_Josee"]
-material = SubResource("Mat_Arch_Josee")
-size = Vector3(0.12, 3.6, 4.0)
+[sub_resource type="BoxMesh" id="Mesh_LecternTop"]
+material = SubResource("Mat_GoldTrim")
+size = Vector3(0.8, 0.1, 0.5)
 
-[sub_resource type="BoxMesh" id="Mesh_ThemePanel_Walle"]
-material = SubResource("Mat_Portal_Walle")
-size = Vector3(0.08, 5.4, 7.0)
+[sub_resource type="BoxShape3D" id="Shape_Lectern"]
+size = Vector3(1, 1.4, 0.8)
 
-[sub_resource type="BoxMesh" id="Mesh_ThemePanel_SilentVoice"]
-material = SubResource("Mat_Portal_SilentVoice")
-size = Vector3(0.08, 5.4, 7.0)
+[sub_resource type="StandardMaterial3D" id="Mat_Wood"]
+albedo_color = Color(0.26, 0.16, 0.11, 1)
+roughness = 0.35
 
-[sub_resource type="BoxMesh" id="Mesh_ThemePanel_KimiNiTodoke"]
-material = SubResource("Mat_Portal_KimiNiTodoke")
-size = Vector3(0.08, 5.4, 7.0)
+[sub_resource type="BoxMesh" id="Mesh_Bench"]
+material = SubResource("Mat_Wood")
+size = Vector3(2.4, 0.45, 0.9)
 
-[sub_resource type="BoxMesh" id="Mesh_ThemePanel_Josee"]
-material = SubResource("Mat_Portal_Josee")
-size = Vector3(0.08, 5.4, 7.0)
+[sub_resource type="BoxShape3D" id="Shape_Bench"]
+size = Vector3(2.4, 0.45, 0.9)
 
-[sub_resource type="BoxShape3D" id="Shape_ThemePanel"]
-size = Vector3(0.5, 5.4, 7.0)
+[sub_resource type="StandardMaterial3D" id="Mat_BlackFrame"]
+albedo_color = Color(0.06, 0.06, 0.08, 1)
+metallic = 0.7
+roughness = 0.25
 
 [sub_resource type="BoxMesh" id="Mesh_PosterFrame"]
 material = SubResource("Mat_BlackFrame")
 size = Vector3(2.6, 3.6, 0.08)
+
+[sub_resource type="StandardMaterial3D" id="Mat_BlankCanvas"]
+albedo_color = Color(0.96, 0.95, 0.93, 1)
+roughness = 0.7
 
 [sub_resource type="BoxMesh" id="Mesh_PosterCanvas"]
 material = SubResource("Mat_BlankCanvas")
@@ -273,6 +158,11 @@ size = Vector3(2.4, 1.6, 0.09)
 [sub_resource type="BoxShape3D" id="Shape_Photo"]
 size = Vector3(2.6, 1.8, 0.6)
 
+[sub_resource type="StandardMaterial3D" id="Mat_Pedestal"]
+albedo_color = Color(0.94, 0.94, 0.96, 1)
+metallic = 0.05
+roughness = 0.18
+
 [sub_resource type="BoxMesh" id="Mesh_Pedestal"]
 material = SubResource("Mat_Pedestal")
 size = Vector3(2.4, 0.6, 2.4)
@@ -280,27 +170,19 @@ size = Vector3(2.4, 0.6, 2.4)
 [sub_resource type="BoxShape3D" id="Shape_Pedestal"]
 size = Vector3(2.4, 1.8, 2.4)
 
-[sub_resource type="BoxMesh" id="Mesh_LecternStand"]
-material = SubResource("Mat_Lectern")
-size = Vector3(0.7, 1.0, 0.4)
-
-[sub_resource type="BoxMesh" id="Mesh_LecternTop"]
-material = SubResource("Mat_GoldTrim")
-size = Vector3(0.8, 0.1, 0.5)
-
-[sub_resource type="BoxShape3D" id="Shape_Lectern"]
-size = Vector3(1.0, 1.4, 0.8)
-
-[sub_resource type="BoxMesh" id="Mesh_Bench"]
-material = SubResource("Mat_Wood")
-size = Vector3(2.4, 0.45, 0.9)
-
-[sub_resource type="BoxShape3D" id="Shape_Bench"]
-size = Vector3(2.4, 0.45, 0.9)
+[sub_resource type="StandardMaterial3D" id="Mat_WalleYellow"]
+albedo_color = Color(0.88, 0.68, 0.18, 1)
+metallic = 0.3
+roughness = 0.35
 
 [sub_resource type="BoxMesh" id="Mesh_WalleChassis"]
 material = SubResource("Mat_WalleYellow")
 size = Vector3(0.9, 0.8, 0.8)
+
+[sub_resource type="StandardMaterial3D" id="Mat_Beam"]
+albedo_color = Color(0.1, 0.1, 0.12, 1)
+metallic = 0.6
+roughness = 0.35
 
 [sub_resource type="BoxMesh" id="Mesh_WalleTread"]
 material = SubResource("Mat_Beam")
@@ -312,6 +194,12 @@ top_radius = 0.16
 bottom_radius = 0.18
 height = 0.35
 
+[sub_resource type="StandardMaterial3D" id="Mat_WalleEyes"]
+albedo_color = Color(0.3, 0.85, 1, 1)
+emission_enabled = true
+emission = Color(0.3, 0.85, 1, 1)
+emission_energy_multiplier = 2.5
+
 [sub_resource type="SphereMesh" id="Mesh_WalleLens"]
 material = SubResource("Mat_WalleEyes")
 radius = 0.12
@@ -320,6 +208,12 @@ height = 0.24
 [sub_resource type="BoxMesh" id="Mesh_Boot"]
 material = SubResource("Mat_Beam")
 size = Vector3(0.24, 0.26, 0.36)
+
+[sub_resource type="StandardMaterial3D" id="Mat_PlantGreen"]
+albedo_color = Color(0.2, 0.88, 0.25, 1)
+emission_enabled = true
+emission = Color(0.2, 0.88, 0.25, 1)
+emission_energy_multiplier = 1.5
 
 [sub_resource type="CylinderMesh" id="Mesh_PlantStem"]
 material = SubResource("Mat_PlantGreen")
@@ -330,6 +224,13 @@ height = 0.22
 [sub_resource type="PrismMesh" id="Mesh_PlantLeaf"]
 material = SubResource("Mat_PlantGreen")
 size = Vector3(0.12, 0.16, 0.04)
+
+[sub_resource type="StandardMaterial3D" id="Mat_ZenWater"]
+albedo_color = Color(0.2, 0.75, 0.85, 1)
+roughness = 0.05
+emission_enabled = true
+emission = Color(0.15, 0.6, 0.7, 1)
+emission_energy_multiplier = 0.8
 
 [sub_resource type="CylinderMesh" id="Mesh_WaterDisc"]
 material = SubResource("Mat_ZenWater")
@@ -347,7 +248,7 @@ size = Vector3(0.44, 0.05, 0.32)
 
 [sub_resource type="BoxMesh" id="Mesh_SchoolDesk"]
 material = SubResource("Mat_Wood")
-size = Vector3(1.0, 0.06, 0.65)
+size = Vector3(1, 0.06, 0.65)
 
 [sub_resource type="BoxMesh" id="Mesh_SchoolChair"]
 material = SubResource("Mat_Wood")
@@ -357,6 +258,10 @@ size = Vector3(0.5, 0.05, 0.5)
 material = SubResource("Mat_BlankCanvas")
 size = Vector3(0.12, 0.1, 0.12)
 
+[sub_resource type="StandardMaterial3D" id="Mat_JoseeRed"]
+albedo_color = Color(0.7, 0.16, 0.2, 1)
+roughness = 0.4
+
 [sub_resource type="BoxMesh" id="Mesh_WheelchairSeat"]
 material = SubResource("Mat_JoseeRed")
 size = Vector3(0.65, 0.1, 0.65)
@@ -364,6 +269,11 @@ size = Vector3(0.65, 0.1, 0.65)
 [sub_resource type="BoxMesh" id="Mesh_WheelchairBack"]
 material = SubResource("Mat_JoseeRed")
 size = Vector3(0.65, 0.7, 0.08)
+
+[sub_resource type="StandardMaterial3D" id="Mat_Chrome"]
+albedo_color = Color(0.92, 0.93, 0.96, 1)
+metallic = 1.0
+roughness = 0.1
 
 [sub_resource type="TorusMesh" id="Mesh_Wheel"]
 material = SubResource("Mat_Chrome")
@@ -374,232 +284,210 @@ outer_radius = 0.45
 material = SubResource("Mat_Wood")
 size = Vector3(0.7, 1.5, 0.4)
 
+[sub_resource type="StandardMaterial3D" id="Mat_OceanBlue"]
+albedo_color = Color(0.08, 0.45, 0.78, 1)
+emission_enabled = true
+emission = Color(0.08, 0.45, 0.78, 1)
+emission_energy_multiplier = 0.8
+
 [sub_resource type="BoxMesh" id="Mesh_EaselCanvas"]
 material = SubResource("Mat_OceanBlue")
 size = Vector3(0.65, 0.5, 0.05)
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" unique_id=1106096056]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=889995758]
 environment = SubResource("Environment_museum")
 
-[node name="GrandBuilding" type="Node3D" parent="."]
+[node name="GrandBuilding" type="Node3D" parent="." unique_id=1869827279]
 
-[node name="MainFloor" type="StaticBody3D" parent="GrandBuilding"]
+[node name="MainFloor" type="StaticBody3D" parent="GrandBuilding" unique_id=947061993]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -10)
 
-[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/MainFloor"]
+[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/MainFloor" unique_id=1217085321]
 mesh = SubResource("Mesh_MainFloor")
 
-[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/MainFloor"]
+[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/MainFloor" unique_id=135545363]
 shape = SubResource("Shape_MainFloor")
 
-[node name="Carpet" type="MeshInstance3D" parent="GrandBuilding"]
+[node name="Carpet" type="MeshInstance3D" parent="GrandBuilding" unique_id=412963283]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015, -10)
 mesh = SubResource("Mesh_Carpet")
 
-[node name="MainCeiling" type="MeshInstance3D" parent="GrandBuilding"]
+[node name="MainCeiling" type="MeshInstance3D" parent="GrandBuilding" unique_id=2075628872]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, -10)
 mesh = SubResource("Mesh_MainCeiling")
 
-[node name="OuterWall_South" type="StaticBody3D" parent="GrandBuilding"]
+[node name="OuterWall_South" type="StaticBody3D" parent="GrandBuilding" unique_id=2064037605]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, 16.3)
 
-[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/OuterWall_South"]
+[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/OuterWall_South" unique_id=1030450792]
 mesh = SubResource("Mesh_OuterWall_EW")
 
-[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/OuterWall_South"]
+[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/OuterWall_South" unique_id=416414153]
 shape = SubResource("Shape_OuterWall_EW")
 
-[node name="OuterWall_North" type="StaticBody3D" parent="GrandBuilding"]
+[node name="OuterWall_North" type="StaticBody3D" parent="GrandBuilding" unique_id=1262970992]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, -36.3)
 
-[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/OuterWall_North"]
+[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/OuterWall_North" unique_id=598406826]
 mesh = SubResource("Mesh_OuterWall_EW")
 
-[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/OuterWall_North"]
+[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/OuterWall_North" unique_id=401018497]
 shape = SubResource("Shape_OuterWall_EW")
 
-[node name="OuterWall_West" type="StaticBody3D" parent="GrandBuilding"]
+[node name="OuterWall_West" type="StaticBody3D" parent="GrandBuilding" unique_id=1740725228]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.3, 2.75, -10)
 
-[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/OuterWall_West"]
+[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/OuterWall_West" unique_id=106885979]
 mesh = SubResource("Mesh_OuterWall_NS")
 
-[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/OuterWall_West"]
+[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/OuterWall_West" unique_id=634896447]
 shape = SubResource("Shape_OuterWall_NS")
 
-[node name="OuterWall_East" type="StaticBody3D" parent="GrandBuilding"]
+[node name="OuterWall_East" type="StaticBody3D" parent="GrandBuilding" unique_id=1164667981]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3, 2.75, -10)
 
-[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/OuterWall_East"]
+[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/OuterWall_East" unique_id=9456261]
 mesh = SubResource("Mesh_OuterWall_NS")
 
-[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/OuterWall_East"]
+[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/OuterWall_East" unique_id=1252601260]
 shape = SubResource("Shape_OuterWall_NS")
 
-[node name="Divider_West" type="StaticBody3D" parent="GrandBuilding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0, 2.75, -10.0)
+[node name="Divider_West" type="StaticBody3D" parent="GrandBuilding" unique_id=1962532560]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2.75, -10)
 
-[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/Divider_West"]
+[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/Divider_West" unique_id=795098312]
 mesh = SubResource("Mesh_RoomDivider")
 
-[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/Divider_West"]
+[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/Divider_West" unique_id=819910030]
 shape = SubResource("Shape_RoomDivider")
 
-[node name="Divider_East" type="StaticBody3D" parent="GrandBuilding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0, 2.75, -10.0)
+[node name="Divider_East" type="StaticBody3D" parent="GrandBuilding" unique_id=1555137107]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2.75, -10)
 
-[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/Divider_East"]
+[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/Divider_East" unique_id=2125274447]
 mesh = SubResource("Mesh_RoomDivider")
 
-[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/Divider_East"]
+[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/Divider_East" unique_id=289052376]
 shape = SubResource("Shape_RoomDivider")
 
-[node name="HallWall_W1" type="StaticBody3D" parent="GrandBuilding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0, 2.75, 8.9)
+[node name="HallWall_W1" type="StaticBody3D" parent="GrandBuilding" unique_id=1499552068]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2.75, 8.9)
 
-[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/HallWall_W1"]
+[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/HallWall_W1" unique_id=1407332500]
 mesh = SubResource("Mesh_HallWall_Seg1")
 
-[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/HallWall_W1"]
+[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/HallWall_W1" unique_id=961981405]
 shape = SubResource("Shape_HallWall_Seg1")
 
-[node name="Lintel_Door1" type="StaticBody3D" parent="GrandBuilding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0, 4.5, 0.0)
+[node name="Lintel_Door1" type="StaticBody3D" parent="GrandBuilding" unique_id=764526461]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4.5, 0)
 
-[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/Lintel_Door1"]
+[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/Lintel_Door1" unique_id=1070633337]
 mesh = SubResource("Mesh_DoorLintel")
 
-[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/Lintel_Door1"]
+[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/Lintel_Door1" unique_id=853739437]
 shape = SubResource("Shape_DoorLintel")
 
-[node name="HallWall_W2" type="StaticBody3D" parent="GrandBuilding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0, 2.75, -10.0)
+[node name="HallWall_W2" type="StaticBody3D" parent="GrandBuilding" unique_id=1058700934]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2.75, -10)
 
-[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/HallWall_W2"]
+[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/HallWall_W2" unique_id=1628607753]
 mesh = SubResource("Mesh_HallWall_Seg2")
 
-[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/HallWall_W2"]
+[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/HallWall_W2" unique_id=813680229]
 shape = SubResource("Shape_HallWall_Seg2")
 
-[node name="Lintel_Door3" type="StaticBody3D" parent="GrandBuilding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0, 4.5, -20.0)
+[node name="Lintel_Door3" type="StaticBody3D" parent="GrandBuilding" unique_id=551304714]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4.5, -20)
 
-[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/Lintel_Door3"]
+[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/Lintel_Door3" unique_id=540222720]
 mesh = SubResource("Mesh_DoorLintel")
 
-[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/Lintel_Door3"]
+[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/Lintel_Door3" unique_id=408673937]
 shape = SubResource("Shape_DoorLintel")
 
-[node name="HallWall_W3" type="StaticBody3D" parent="GrandBuilding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0, 2.75, -28.9)
+[node name="HallWall_W3" type="StaticBody3D" parent="GrandBuilding" unique_id=1503280095]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2.75, -28.9)
 
-[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/HallWall_W3"]
+[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/HallWall_W3" unique_id=430479554]
 mesh = SubResource("Mesh_HallWall_Seg3")
 
-[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/HallWall_W3"]
+[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/HallWall_W3" unique_id=1519289733]
 shape = SubResource("Shape_HallWall_Seg3")
 
-[node name="HallWall_E1" type="StaticBody3D" parent="GrandBuilding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0, 2.75, 8.9)
+[node name="HallWall_E1" type="StaticBody3D" parent="GrandBuilding" unique_id=1629079526]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.75, 8.9)
 
-[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/HallWall_E1"]
+[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/HallWall_E1" unique_id=693539935]
 mesh = SubResource("Mesh_HallWall_Seg1")
 
-[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/HallWall_E1"]
+[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/HallWall_E1" unique_id=1384666657]
 shape = SubResource("Shape_HallWall_Seg1")
 
-[node name="Lintel_Door2" type="StaticBody3D" parent="GrandBuilding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0, 4.5, 0.0)
+[node name="Lintel_Door2" type="StaticBody3D" parent="GrandBuilding" unique_id=1404706200]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4.5, 0)
 
-[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/Lintel_Door2"]
+[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/Lintel_Door2" unique_id=1800004326]
 mesh = SubResource("Mesh_DoorLintel")
 
-[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/Lintel_Door2"]
+[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/Lintel_Door2" unique_id=2137500180]
 shape = SubResource("Shape_DoorLintel")
 
-[node name="HallWall_E2" type="StaticBody3D" parent="GrandBuilding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0, 2.75, -10.0)
+[node name="HallWall_E2" type="StaticBody3D" parent="GrandBuilding" unique_id=1230863635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.75, -10)
 
-[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/HallWall_E2"]
+[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/HallWall_E2" unique_id=1450154801]
 mesh = SubResource("Mesh_HallWall_Seg2")
 
-[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/HallWall_E2"]
+[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/HallWall_E2" unique_id=553065106]
 shape = SubResource("Shape_HallWall_Seg2")
 
-[node name="Lintel_Door4" type="StaticBody3D" parent="GrandBuilding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0, 4.5, -20.0)
+[node name="Lintel_Door4" type="StaticBody3D" parent="GrandBuilding" unique_id=162266246]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4.5, -20)
 
-[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/Lintel_Door4"]
+[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/Lintel_Door4" unique_id=1206778546]
 mesh = SubResource("Mesh_DoorLintel")
 
-[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/Lintel_Door4"]
+[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/Lintel_Door4" unique_id=1974498377]
 shape = SubResource("Shape_DoorLintel")
 
-[node name="HallWall_E3" type="StaticBody3D" parent="GrandBuilding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0, 2.75, -28.9)
+[node name="HallWall_E3" type="StaticBody3D" parent="GrandBuilding" unique_id=835210917]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.75, -28.9)
 
-[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/HallWall_E3"]
+[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/HallWall_E3" unique_id=1986471052]
 mesh = SubResource("Mesh_HallWall_Seg3")
 
-[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/HallWall_E3"]
+[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/HallWall_E3" unique_id=529864997]
 shape = SubResource("Shape_HallWall_Seg3")
 
-[node name="PortalArch_Door1" type="Node3D" parent="GrandBuilding"]
+[node name="PortalArch_Door1" type="Node3D" parent="GrandBuilding" unique_id=49280602]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.72, 2.7, 0)
 
-[node name="ThemeWall" type="MeshInstance3D" parent="GrandBuilding/PortalArch_Door1"]
-mesh = SubResource("Mesh_ThemePanel_Walle")
-
-[node name="Arch" type="MeshInstance3D" parent="GrandBuilding/PortalArch_Door1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, -0.9, 0)
-mesh = SubResource("Mesh_Arch_Walle")
-
-[node name="PortalArch_Door2" type="Node3D" parent="GrandBuilding"]
+[node name="PortalArch_Door2" type="Node3D" parent="GrandBuilding" unique_id=1701410042]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.72, 2.7, 0)
 
-[node name="ThemeWall" type="MeshInstance3D" parent="GrandBuilding/PortalArch_Door2"]
-mesh = SubResource("Mesh_ThemePanel_SilentVoice")
-
-[node name="Arch" type="MeshInstance3D" parent="GrandBuilding/PortalArch_Door2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, -0.9, 0)
-mesh = SubResource("Mesh_Arch_SilentVoice")
-
-[node name="PortalArch_Door3" type="Node3D" parent="GrandBuilding"]
+[node name="PortalArch_Door3" type="Node3D" parent="GrandBuilding" unique_id=1959098727]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.72, 2.7, -20)
 
-[node name="ThemeWall" type="MeshInstance3D" parent="GrandBuilding/PortalArch_Door3"]
-mesh = SubResource("Mesh_ThemePanel_KimiNiTodoke")
-
-[node name="Arch" type="MeshInstance3D" parent="GrandBuilding/PortalArch_Door3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, -0.9, 0)
-mesh = SubResource("Mesh_Arch_KimiNiTodoke")
-
-[node name="PortalArch_Door4" type="Node3D" parent="GrandBuilding"]
+[node name="PortalArch_Door4" type="Node3D" parent="GrandBuilding" unique_id=1165962508]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.72, 2.7, -20)
 
-[node name="ThemeWall" type="MeshInstance3D" parent="GrandBuilding/PortalArch_Door4"]
-mesh = SubResource("Mesh_ThemePanel_Josee")
+[node name="Door1_WallE" parent="GrandBuilding" unique_id=514178981 instance=ExtResource("3_door")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
 
-[node name="Arch" type="MeshInstance3D" parent="GrandBuilding/PortalArch_Door4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, -0.9, 0)
-mesh = SubResource("Mesh_Arch_Josee")
+[node name="Door2_SilentVoice" parent="GrandBuilding" unique_id=1204422803 instance=ExtResource("3_door")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 
-[node name="Door1_WallE" parent="GrandBuilding" instance=ExtResource("3_door")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0, 0, 0)
+[node name="Door3_KimiNiTodoke" parent="GrandBuilding" unique_id=2062840750 instance=ExtResource("3_door")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -20)
 
-[node name="Door2_SilentVoice" parent="GrandBuilding" instance=ExtResource("3_door")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0, 0, 0)
+[node name="Door4_Josee" parent="GrandBuilding" unique_id=1437473763 instance=ExtResource("3_door")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -20)
 
-[node name="Door3_KimiNiTodoke" parent="GrandBuilding" instance=ExtResource("3_door")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0, 0, -20)
-
-[node name="Door4_Josee" parent="GrandBuilding" instance=ExtResource("3_door")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0, 0, -20)
-
-[node name="LobbyLectern" type="StaticBody3D" parent="GrandBuilding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.0)
+[node name="LobbyLectern" type="StaticBody3D" parent="GrandBuilding" unique_id=1777068517]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("2_interactable")
 prompt_text = "Baca Panduan Museum"
 exhibit_title = "Museum Karakter Fiksi Hidupku"
@@ -613,562 +501,566 @@ Di museum ini terdapat 4 pintu ruangan memorial tematik:
 
 Silakan telusuri lorong ini dan masuki setiap ruangan."
 
-[node name="Stand" type="MeshInstance3D" parent="GrandBuilding/LobbyLectern"]
+[node name="Stand" type="MeshInstance3D" parent="GrandBuilding/LobbyLectern" unique_id=1881849712]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("Mesh_LecternStand")
 
-[node name="Top" type="MeshInstance3D" parent="GrandBuilding/LobbyLectern"]
+[node name="Top" type="MeshInstance3D" parent="GrandBuilding/LobbyLectern" unique_id=450288497]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.05, 0)
 mesh = SubResource("Mesh_LecternTop")
 
-[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/LobbyLectern"]
+[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/LobbyLectern" unique_id=530036377]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 shape = SubResource("Shape_Lectern")
 
-[node name="HallLight_10" type="OmniLight3D" parent="GrandBuilding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8, 10.0)
-light_color = Color(1.0, 0.95, 0.9, 1)
+[node name="HallLight_10" type="OmniLight3D" parent="GrandBuilding" unique_id=658395504]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8, 10)
+light_color = Color(1, 0.95, 0.9, 1)
 light_energy = 2.2
 omni_range = 14.0
 
-[node name="HallLight_0" type="OmniLight3D" parent="GrandBuilding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8, 0.0)
-light_color = Color(1.0, 0.95, 0.9, 1)
+[node name="HallLight_0" type="OmniLight3D" parent="GrandBuilding" unique_id=957480938]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8, 0)
+light_color = Color(1, 0.95, 0.9, 1)
 light_energy = 2.2
 omni_range = 14.0
 
-[node name="HallLight_-10" type="OmniLight3D" parent="GrandBuilding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8, -10.0)
-light_color = Color(1.0, 0.95, 0.9, 1)
+[node name="HallLight_-10" type="OmniLight3D" parent="GrandBuilding" unique_id=1449590277]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8, -10)
+light_color = Color(1, 0.95, 0.9, 1)
 light_energy = 2.2
 omni_range = 14.0
 
-[node name="HallLight_-20" type="OmniLight3D" parent="GrandBuilding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8, -20.0)
-light_color = Color(1.0, 0.95, 0.9, 1)
+[node name="HallLight_-20" type="OmniLight3D" parent="GrandBuilding" unique_id=69864210]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8, -20)
+light_color = Color(1, 0.95, 0.9, 1)
 light_energy = 2.2
 omni_range = 14.0
 
-[node name="HallLight_-30" type="OmniLight3D" parent="GrandBuilding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8, -30.0)
-light_color = Color(1.0, 0.95, 0.9, 1)
+[node name="HallLight_-30" type="OmniLight3D" parent="GrandBuilding" unique_id=2043543266]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8, -30)
+light_color = Color(1, 0.95, 0.9, 1)
 light_energy = 2.2
 omni_range = 14.0
 
-[node name="Bench_5" type="StaticBody3D" parent="GrandBuilding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, 5.0)
+[node name="Bench_5" type="StaticBody3D" parent="GrandBuilding" unique_id=1459158925]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, 5)
 
-[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/Bench_5"]
+[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/Bench_5" unique_id=1291416116]
 mesh = SubResource("Mesh_Bench")
 
-[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/Bench_5"]
+[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/Bench_5" unique_id=1746405547]
 shape = SubResource("Shape_Bench")
 
-[node name="Bench_-10" type="StaticBody3D" parent="GrandBuilding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, -10.0)
+[node name="Bench_-10" type="StaticBody3D" parent="GrandBuilding" unique_id=2074739301]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, -10)
 
-[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/Bench_-10"]
+[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/Bench_-10" unique_id=1956292842]
 mesh = SubResource("Mesh_Bench")
 
-[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/Bench_-10"]
+[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/Bench_-10" unique_id=1190220917]
 shape = SubResource("Shape_Bench")
 
-[node name="Bench_-25" type="StaticBody3D" parent="GrandBuilding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, -25.0)
+[node name="Bench_-25" type="StaticBody3D" parent="GrandBuilding" unique_id=749415614]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, -25)
 
-[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/Bench_-25"]
+[node name="Mesh" type="MeshInstance3D" parent="GrandBuilding/Bench_-25" unique_id=645210758]
 mesh = SubResource("Mesh_Bench")
 
-[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/Bench_-25"]
+[node name="Collision" type="CollisionShape3D" parent="GrandBuilding/Bench_-25" unique_id=2114773833]
 shape = SubResource("Shape_Bench")
 
-[node name="Room_WallE" type="Node3D" parent="."]
+[node name="Room_WallE" type="Node3D" parent="." unique_id=2088704128]
 
-[node name="RoomLight" type="OmniLight3D" parent="Room_WallE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0, 4.8, 0.0)
-light_color = Color(1.0, 0.97, 0.94, 1)
+[node name="RoomLight" type="OmniLight3D" parent="Room_WallE" unique_id=574206378]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 4.8, 0)
+light_color = Color(1, 0.97, 0.94, 1)
 light_energy = 2.5
 omni_range = 18.0
 
-[node name="PosterFrame" type="StaticBody3D" parent="Room_WallE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0, 2.6, -9.6)
+[node name="PosterFrame" type="StaticBody3D" parent="Room_WallE" unique_id=343120683]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2.6, -9.6)
 script = ExtResource("2_interactable")
 prompt_text = "Amati Poster Film"
 exhibit_title = "Poster Film: WALL-E (2008)"
-exhibit_description = "WALL·E (2008) - Sutradara Andrew Stanton (Pixar Animation Studios).\n\nDi masa depan ketika bumi ditinggalkan manusia karena gunungan sampah yang tak tertangani, hanya tersisa satu robot unit kecil yang masih setia menjalankan tugasnya selama lebih dari 700 tahun: Waste Allocation Load Lifter: Earth-Class (WALL-E)."
+exhibit_description = "WALL·E (2008) - Sutradara Andrew Stanton (Pixar Animation Studios).
 
-[node name="Frame" type="MeshInstance3D" parent="Room_WallE/PosterFrame"]
+Di masa depan ketika bumi ditinggalkan manusia karena gunungan sampah yang tak tertangani, hanya tersisa satu robot unit kecil yang masih setia menjalankan tugasnya selama lebih dari 700 tahun: Waste Allocation Load Lifter: Earth-Class (WALL-E)."
+
+[node name="Frame" type="MeshInstance3D" parent="Room_WallE/PosterFrame" unique_id=1834280202]
 mesh = SubResource("Mesh_PosterFrame")
 
-[node name="Canvas" type="MeshInstance3D" parent="Room_WallE/PosterFrame"]
+[node name="Canvas" type="MeshInstance3D" parent="Room_WallE/PosterFrame" unique_id=1968710602]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
 mesh = SubResource("Mesh_PosterCanvas")
 
-[node name="Collision" type="CollisionShape3D" parent="Room_WallE/PosterFrame"]
+[node name="Collision" type="CollisionShape3D" parent="Room_WallE/PosterFrame" unique_id=245239909]
 shape = SubResource("Shape_Poster")
 
-[node name="SpotPoster" type="SpotLight3D" parent="Room_WallE"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -13.0, 4.8, -7.0)
-light_color = Color(1.0, 0.96, 0.9, 1)
+[node name="SpotPoster" type="SpotLight3D" parent="Room_WallE" unique_id=130272388]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -13, 4.8, -7)
+light_color = Color(1, 0.96, 0.9, 1)
 light_energy = 3.5
 spot_range = 6.5
-spot_angle = 45.0
 
-[node name="Photo1" type="StaticBody3D" parent="Room_WallE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0, 2.6, 9.6)
+[node name="Photo1" type="StaticBody3D" parent="Room_WallE" unique_id=1422571131]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 2.6, 9.6)
 script = ExtResource("2_interactable")
 prompt_text = "Amati Foto Kenangan 1"
 exhibit_title = "Foto 1: WALL-E & Jiwa Penjelajah"
 exhibit_description = "Meskipun hanya sebuah mesin pemadat rongsokan, WALL-E mengembangkan rasa ingin tahu yang murni. Dia merawat hal-hal kecil yang terlupakan dengan penuh kelembutan."
 
-[node name="Frame" type="MeshInstance3D" parent="Room_WallE/Photo1"]
+[node name="Frame" type="MeshInstance3D" parent="Room_WallE/Photo1" unique_id=1662326676]
 mesh = SubResource("Mesh_PhotoFrame")
 
-[node name="Canvas" type="MeshInstance3D" parent="Room_WallE/Photo1"]
+[node name="Canvas" type="MeshInstance3D" parent="Room_WallE/Photo1" unique_id=251425046]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)
 mesh = SubResource("Mesh_PhotoCanvas")
 
-[node name="Collision" type="CollisionShape3D" parent="Room_WallE/Photo1"]
+[node name="Collision" type="CollisionShape3D" parent="Room_WallE/Photo1" unique_id=478984187]
 shape = SubResource("Shape_Photo")
 
-[node name="Photo2" type="StaticBody3D" parent="Room_WallE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.0, 2.6, 9.6)
+[node name="Photo2" type="StaticBody3D" parent="Room_WallE" unique_id=720741390]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2.6, 9.6)
 script = ExtResource("2_interactable")
 prompt_text = "Amati Foto Kenangan 2"
 exhibit_title = "Foto 2: WALL-E & EVE (Direktif Cinta)"
 exhibit_description = "Momen ketika tangan kedua robot saling bertaut adalah simbol cinta paling murni tanpa sepatah kata pun terucap."
 
-[node name="Frame" type="MeshInstance3D" parent="Room_WallE/Photo2"]
+[node name="Frame" type="MeshInstance3D" parent="Room_WallE/Photo2" unique_id=1671649970]
 mesh = SubResource("Mesh_PhotoFrame")
 
-[node name="Canvas" type="MeshInstance3D" parent="Room_WallE/Photo2"]
+[node name="Canvas" type="MeshInstance3D" parent="Room_WallE/Photo2" unique_id=141133749]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)
 mesh = SubResource("Mesh_PhotoCanvas")
 
-[node name="Collision" type="CollisionShape3D" parent="Room_WallE/Photo2"]
+[node name="Collision" type="CollisionShape3D" parent="Room_WallE/Photo2" unique_id=50075920]
 shape = SubResource("Shape_Photo")
 
-[node name="BioLectern" type="StaticBody3D" parent="Room_WallE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 3.0)
+[node name="BioLectern" type="StaticBody3D" parent="Room_WallE" unique_id=1503914773]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 3)
 script = ExtResource("2_interactable")
 prompt_text = "Baca Kisah Karakter"
 exhibit_title = "Kenangan Pribadi: Mengapa WALL-E Mengubah Hidupku"
 exhibit_description = "WALL-E mengajarkan arti kesendirian yang indah: bagaimana di tengah dunia yang hancur dan sepi, dia tetap menyimpan jiwa yang hangat dan menjaga kebaikan hati. Dia mengajarkan kita untuk tidak hanya sekadar bertahan hidup (survive), melainkan benar-benar hidup (live)."
 
-[node name="Stand" type="MeshInstance3D" parent="Room_WallE/BioLectern"]
+[node name="Stand" type="MeshInstance3D" parent="Room_WallE/BioLectern" unique_id=1914962016]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("Mesh_LecternStand")
 
-[node name="Top" type="MeshInstance3D" parent="Room_WallE/BioLectern"]
+[node name="Top" type="MeshInstance3D" parent="Room_WallE/BioLectern" unique_id=1505060611]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.05, 0)
 mesh = SubResource("Mesh_LecternTop")
 
-[node name="Collision" type="CollisionShape3D" parent="Room_WallE/BioLectern"]
+[node name="Collision" type="CollisionShape3D" parent="Room_WallE/BioLectern" unique_id=1588802564]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 shape = SubResource("Shape_Lectern")
 
-[node name="CenterTribute" type="StaticBody3D" parent="Room_WallE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0, 0, 0.0)
+[node name="CenterTribute" type="StaticBody3D" parent="Room_WallE" unique_id=2093594999]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
 script = ExtResource("2_interactable")
 prompt_text = "Amati Monumen Karakter"
 exhibit_title = "Monumen WALL-E & Tunas Hijau Dalam Sepatu"
 exhibit_description = "Patung figur WALL-E yang menggenggam sepatu boot berisi tunas tanaman hijau yang hidup. Bukti bahwa cinta dan harapan selalu menemukan jalan untuk bertumbuh kembali."
 
-[node name="Pedestal" type="MeshInstance3D" parent="Room_WallE/CenterTribute"]
+[node name="Pedestal" type="MeshInstance3D" parent="Room_WallE/CenterTribute" unique_id=752153739]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 mesh = SubResource("Mesh_Pedestal")
 
-[node name="Collision" type="CollisionShape3D" parent="Room_WallE/CenterTribute"]
+[node name="Collision" type="CollisionShape3D" parent="Room_WallE/CenterTribute" unique_id=129627486]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("Shape_Pedestal")
 
-[node name="Chassis" type="MeshInstance3D" parent="Room_WallE/CenterTribute"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 0)
+[node name="Chassis" type="MeshInstance3D" parent="Room_WallE/CenterTribute" unique_id=1447729230]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("Mesh_WalleChassis")
 
-[node name="TreadL" type="MeshInstance3D" parent="Room_WallE/CenterTribute"]
+[node name="TreadL" type="MeshInstance3D" parent="Room_WallE/CenterTribute" unique_id=436236482]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.9, 0)
 mesh = SubResource("Mesh_WalleTread")
 
-[node name="TreadR" type="MeshInstance3D" parent="Room_WallE/CenterTribute"]
+[node name="TreadR" type="MeshInstance3D" parent="Room_WallE/CenterTribute" unique_id=1528780789]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.9, 0)
 mesh = SubResource("Mesh_WalleTread")
 
-[node name="EyeL" type="MeshInstance3D" parent="Room_WallE/CenterTribute"]
+[node name="EyeL" type="MeshInstance3D" parent="Room_WallE/CenterTribute" unique_id=1549377827]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1.7, 0)
 mesh = SubResource("Mesh_WalleEye")
 
-[node name="EyeLensL" type="MeshInstance3D" parent="Room_WallE/CenterTribute"]
+[node name="EyeLensL" type="MeshInstance3D" parent="Room_WallE/CenterTribute" unique_id=1406199757]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1.7, 0.18)
 mesh = SubResource("Mesh_WalleLens")
 
-[node name="EyeR" type="MeshInstance3D" parent="Room_WallE/CenterTribute"]
+[node name="EyeR" type="MeshInstance3D" parent="Room_WallE/CenterTribute" unique_id=379345852]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1.7, 0)
 mesh = SubResource("Mesh_WalleEye")
 
-[node name="EyeLensR" type="MeshInstance3D" parent="Room_WallE/CenterTribute"]
+[node name="EyeLensR" type="MeshInstance3D" parent="Room_WallE/CenterTribute" unique_id=1723931326]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1.7, 0.18)
 mesh = SubResource("Mesh_WalleLens")
 
-[node name="Boot" type="MeshInstance3D" parent="Room_WallE/CenterTribute"]
+[node name="Boot" type="MeshInstance3D" parent="Room_WallE/CenterTribute" unique_id=1367579592]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72, 0.65)
 mesh = SubResource("Mesh_Boot")
 
-[node name="Stem" type="MeshInstance3D" parent="Room_WallE/CenterTribute"]
+[node name="Stem" type="MeshInstance3D" parent="Room_WallE/CenterTribute" unique_id=1987864632]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0.65)
 mesh = SubResource("Mesh_PlantStem")
 
-[node name="Leaf" type="MeshInstance3D" parent="Room_WallE/CenterTribute"]
+[node name="Leaf" type="MeshInstance3D" parent="Room_WallE/CenterTribute" unique_id=1999921012]
 transform = Transform3D(0.7, -0.7, 0, 0.7, 0.7, 0, 0, 0, 1, 0.08, 1.05, 0.65)
 mesh = SubResource("Mesh_PlantLeaf")
 
-[node name="Room_SilentVoice" type="Node3D" parent="."]
+[node name="Room_SilentVoice" type="Node3D" parent="." unique_id=1382087989]
 
-[node name="RoomLight" type="OmniLight3D" parent="Room_SilentVoice"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0, 4.8, 0.0)
-light_color = Color(1.0, 0.97, 0.94, 1)
+[node name="RoomLight" type="OmniLight3D" parent="Room_SilentVoice" unique_id=1247422952]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 4.8, 0)
+light_color = Color(1, 0.97, 0.94, 1)
 light_energy = 2.5
 omni_range = 18.0
 
-[node name="PosterFrame" type="StaticBody3D" parent="Room_SilentVoice"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0, 2.6, -9.6)
+[node name="PosterFrame" type="StaticBody3D" parent="Room_SilentVoice" unique_id=1109982118]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2.6, -9.6)
 script = ExtResource("2_interactable")
 prompt_text = "Amati Poster Film"
 exhibit_title = "Poster Film: A Silent Voice (聲の形)"
-exhibit_description = "A Silent Voice / Koe no Katachi (2016) - Sutradara Naoko Yamada (Kyoto Animation).\n\nSebuah karya film animasi mengguncang jiwa yang diadaptasi dari manga karya Yoshitoki Oima. Mengangkat tema penerimaan diri, trauma perundungan, rasa bersalah yang mendalam, dan perjuangan tulus untuk saling mendengar isi hati."
+exhibit_description = "A Silent Voice / Koe no Katachi (2016) - Sutradara Naoko Yamada (Kyoto Animation).
 
-[node name="Frame" type="MeshInstance3D" parent="Room_SilentVoice/PosterFrame"]
+Sebuah karya film animasi mengguncang jiwa yang diadaptasi dari manga karya Yoshitoki Oima. Mengangkat tema penerimaan diri, trauma perundungan, rasa bersalah yang mendalam, dan perjuangan tulus untuk saling mendengar isi hati."
+
+[node name="Frame" type="MeshInstance3D" parent="Room_SilentVoice/PosterFrame" unique_id=1796494256]
 mesh = SubResource("Mesh_PosterFrame")
 
-[node name="Canvas" type="MeshInstance3D" parent="Room_SilentVoice/PosterFrame"]
+[node name="Canvas" type="MeshInstance3D" parent="Room_SilentVoice/PosterFrame" unique_id=527055830]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
 mesh = SubResource("Mesh_PosterCanvas")
 
-[node name="Collision" type="CollisionShape3D" parent="Room_SilentVoice/PosterFrame"]
+[node name="Collision" type="CollisionShape3D" parent="Room_SilentVoice/PosterFrame" unique_id=240822203]
 shape = SubResource("Shape_Poster")
 
-[node name="SpotPoster" type="SpotLight3D" parent="Room_SilentVoice"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 13.0, 4.8, -7.0)
-light_color = Color(1.0, 0.96, 0.9, 1)
+[node name="SpotPoster" type="SpotLight3D" parent="Room_SilentVoice" unique_id=1605192175]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 13, 4.8, -7)
+light_color = Color(1, 0.96, 0.9, 1)
 light_energy = 3.5
 spot_range = 6.5
-spot_angle = 45.0
 
-[node name="Photo1" type="StaticBody3D" parent="Room_SilentVoice"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.0, 2.6, 9.6)
+[node name="Photo1" type="StaticBody3D" parent="Room_SilentVoice" unique_id=644223199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2.6, 9.6)
 script = ExtResource("2_interactable")
 prompt_text = "Amati Foto Kenangan 1"
 exhibit_title = "Foto 1: Buku Catatan Komunikasi Shoko"
 exhibit_description = "Buku catatan bergaris tempat Shoko Nishimiya menuliskan kalimat perkenalan pertamanya: Nama saya Nishimiya Shoko. Saya tidak bisa mendengar. Buku ini menjadi saksi bisu kesabaran dan keikhlasan hati Shoko."
 
-[node name="Frame" type="MeshInstance3D" parent="Room_SilentVoice/Photo1"]
+[node name="Frame" type="MeshInstance3D" parent="Room_SilentVoice/Photo1" unique_id=1157783507]
 mesh = SubResource("Mesh_PhotoFrame")
 
-[node name="Canvas" type="MeshInstance3D" parent="Room_SilentVoice/Photo1"]
+[node name="Canvas" type="MeshInstance3D" parent="Room_SilentVoice/Photo1" unique_id=321493254]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)
 mesh = SubResource("Mesh_PhotoCanvas")
 
-[node name="Collision" type="CollisionShape3D" parent="Room_SilentVoice/Photo1"]
+[node name="Collision" type="CollisionShape3D" parent="Room_SilentVoice/Photo1" unique_id=192051322]
 shape = SubResource("Shape_Photo")
 
-[node name="Photo2" type="StaticBody3D" parent="Room_SilentVoice"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0, 2.6, 9.6)
+[node name="Photo2" type="StaticBody3D" parent="Room_SilentVoice" unique_id=1500838587]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 2.6, 9.6)
 script = ExtResource("2_interactable")
 prompt_text = "Amati Foto Kenangan 2"
 exhibit_title = "Foto 2: Senyuman Shoko di Jembatan Suimon"
 exhibit_description = "Di atas jembatan memberi makan ikan koi bersama roti tawar, Shoko dan Shoya perlahan membangun kembali jembatan komunikasi yang pernah hancur."
 
-[node name="Frame" type="MeshInstance3D" parent="Room_SilentVoice/Photo2"]
+[node name="Frame" type="MeshInstance3D" parent="Room_SilentVoice/Photo2" unique_id=86572437]
 mesh = SubResource("Mesh_PhotoFrame")
 
-[node name="Canvas" type="MeshInstance3D" parent="Room_SilentVoice/Photo2"]
+[node name="Canvas" type="MeshInstance3D" parent="Room_SilentVoice/Photo2" unique_id=116653336]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)
 mesh = SubResource("Mesh_PhotoCanvas")
 
-[node name="Collision" type="CollisionShape3D" parent="Room_SilentVoice/Photo2"]
+[node name="Collision" type="CollisionShape3D" parent="Room_SilentVoice/Photo2" unique_id=782781701]
 shape = SubResource("Shape_Photo")
 
-[node name="BioLectern" type="StaticBody3D" parent="Room_SilentVoice"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 3.0)
+[node name="BioLectern" type="StaticBody3D" parent="Room_SilentVoice" unique_id=1658023380]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 3)
 script = ExtResource("2_interactable")
 prompt_text = "Baca Kisah Karakter"
 exhibit_title = "Kenangan Pribadi: Mengapa A Silent Voice Mengubah Hidupku"
 exhibit_description = "Film ini menyelamatkan cara pandangku terhadap orang-orang di sekitarku. Tanda silang X yang dilihat Shoya mencerminkan kecemasan dan rasa benci pada diri sendiri. Saat tanda silang itu jatuh, kita menyadari bahwa dunia ini layak untuk didengar dan saling memaafkan."
 
-[node name="Stand" type="MeshInstance3D" parent="Room_SilentVoice/BioLectern"]
+[node name="Stand" type="MeshInstance3D" parent="Room_SilentVoice/BioLectern" unique_id=186159445]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("Mesh_LecternStand")
 
-[node name="Top" type="MeshInstance3D" parent="Room_SilentVoice/BioLectern"]
+[node name="Top" type="MeshInstance3D" parent="Room_SilentVoice/BioLectern" unique_id=1434300517]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.05, 0)
 mesh = SubResource("Mesh_LecternTop")
 
-[node name="Collision" type="CollisionShape3D" parent="Room_SilentVoice/BioLectern"]
+[node name="Collision" type="CollisionShape3D" parent="Room_SilentVoice/BioLectern" unique_id=1972492163]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 shape = SubResource("Shape_Lectern")
 
-[node name="CenterTribute" type="StaticBody3D" parent="Room_SilentVoice"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0, 0, 0.0)
+[node name="CenterTribute" type="StaticBody3D" parent="Room_SilentVoice" unique_id=521024874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
 script = ExtResource("2_interactable")
 prompt_text = "Amati Monumen Karakter"
 exhibit_title = "Memorial Jembatan Suimon & Buku Catatan Hati"
 exhibit_description = "Memorial kolam taman zen kecil dengan jembatan kayu merah dan buku catatan komunikasi Shoko yang melambangkan keberanian untuk saling memahami dan memaafkan diri sendiri."
 
-[node name="Pedestal" type="MeshInstance3D" parent="Room_SilentVoice/CenterTribute"]
+[node name="Pedestal" type="MeshInstance3D" parent="Room_SilentVoice/CenterTribute" unique_id=820958576]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 mesh = SubResource("Mesh_Pedestal")
 
-[node name="Collision" type="CollisionShape3D" parent="Room_SilentVoice/CenterTribute"]
+[node name="Collision" type="CollisionShape3D" parent="Room_SilentVoice/CenterTribute" unique_id=1601753329]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("Shape_Pedestal")
 
-[node name="WaterDisc" type="MeshInstance3D" parent="Room_SilentVoice/CenterTribute"]
+[node name="WaterDisc" type="MeshInstance3D" parent="Room_SilentVoice/CenterTribute" unique_id=1269222251]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62, 0)
 mesh = SubResource("Mesh_WaterDisc")
 
-[node name="Bridge" type="MeshInstance3D" parent="Room_SilentVoice/CenterTribute"]
+[node name="Bridge" type="MeshInstance3D" parent="Room_SilentVoice/CenterTribute" unique_id=1019299161]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 mesh = SubResource("Mesh_BridgePlank")
 
-[node name="Notebook" type="MeshInstance3D" parent="Room_SilentVoice/CenterTribute"]
+[node name="Notebook" type="MeshInstance3D" parent="Room_SilentVoice/CenterTribute" unique_id=2133705358]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.05, 0)
 mesh = SubResource("Mesh_Notebook")
 
-[node name="Room_KimiNiTodoke" type="Node3D" parent="."]
+[node name="Room_KimiNiTodoke" type="Node3D" parent="." unique_id=564386615]
 
-[node name="RoomLight" type="OmniLight3D" parent="Room_KimiNiTodoke"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0, 4.8, -20.0)
-light_color = Color(1.0, 0.97, 0.94, 1)
+[node name="RoomLight" type="OmniLight3D" parent="Room_KimiNiTodoke" unique_id=1161091403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 4.8, -20)
+light_color = Color(1, 0.97, 0.94, 1)
 light_energy = 2.5
 omni_range = 18.0
 
-[node name="PosterFrame" type="StaticBody3D" parent="Room_KimiNiTodoke"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0, 2.6, -29.6)
+[node name="PosterFrame" type="StaticBody3D" parent="Room_KimiNiTodoke" unique_id=1511220970]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2.6, -29.6)
 script = ExtResource("2_interactable")
 prompt_text = "Amati Poster Film"
 exhibit_title = "Poster Anime: Kimi ni Todoke (君に届け)"
-exhibit_description = "Kimi ni Todoke (Production I.G) - Karuho Shiina.\n\nMenceritakan kisah Sawako Kuronuma yang dijuluki Sadako oleh teman-temannya karena penampilannya yang pemalu, serta bagaimana pertemuannya dengan Shota Kazehaya mengubah dunianya selamanya dengan kehangatan dan ketulusan."
+exhibit_description = "Kimi ni Todoke (Production I.G) - Karuho Shiina.
 
-[node name="Frame" type="MeshInstance3D" parent="Room_KimiNiTodoke/PosterFrame"]
+Menceritakan kisah Sawako Kuronuma yang dijuluki Sadako oleh teman-temannya karena penampilannya yang pemalu, serta bagaimana pertemuannya dengan Shota Kazehaya mengubah dunianya selamanya dengan kehangatan dan ketulusan."
+
+[node name="Frame" type="MeshInstance3D" parent="Room_KimiNiTodoke/PosterFrame" unique_id=1111186977]
 mesh = SubResource("Mesh_PosterFrame")
 
-[node name="Canvas" type="MeshInstance3D" parent="Room_KimiNiTodoke/PosterFrame"]
+[node name="Canvas" type="MeshInstance3D" parent="Room_KimiNiTodoke/PosterFrame" unique_id=626409469]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
 mesh = SubResource("Mesh_PosterCanvas")
 
-[node name="Collision" type="CollisionShape3D" parent="Room_KimiNiTodoke/PosterFrame"]
+[node name="Collision" type="CollisionShape3D" parent="Room_KimiNiTodoke/PosterFrame" unique_id=1136709994]
 shape = SubResource("Shape_Poster")
 
-[node name="SpotPoster" type="SpotLight3D" parent="Room_KimiNiTodoke"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -13.0, 4.8, -27.0)
-light_color = Color(1.0, 0.96, 0.9, 1)
+[node name="SpotPoster" type="SpotLight3D" parent="Room_KimiNiTodoke" unique_id=66846193]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -13, 4.8, -27)
+light_color = Color(1, 0.96, 0.9, 1)
 light_energy = 3.5
 spot_range = 6.5
-spot_angle = 45.0
 
-[node name="Photo1" type="StaticBody3D" parent="Room_KimiNiTodoke"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0, 2.6, -10.4)
+[node name="Photo1" type="StaticBody3D" parent="Room_KimiNiTodoke" unique_id=1364957725]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 2.6, -10.4)
 script = ExtResource("2_interactable")
 prompt_text = "Amati Foto Kenangan 1"
 exhibit_title = "Foto 1: Ketulusan Senyuman Sawako"
 exhibit_description = "Sawako adalah jiwa yang murni. Walaupun sering dijauhi teman sekelas karena salah paham, dia tidak pernah menaruh dendam dan selalu rajin menyiram bunga kelas."
 
-[node name="Frame" type="MeshInstance3D" parent="Room_KimiNiTodoke/Photo1"]
+[node name="Frame" type="MeshInstance3D" parent="Room_KimiNiTodoke/Photo1" unique_id=1904842131]
 mesh = SubResource("Mesh_PhotoFrame")
 
-[node name="Canvas" type="MeshInstance3D" parent="Room_KimiNiTodoke/Photo1"]
+[node name="Canvas" type="MeshInstance3D" parent="Room_KimiNiTodoke/Photo1" unique_id=2085563911]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)
 mesh = SubResource("Mesh_PhotoCanvas")
 
-[node name="Collision" type="CollisionShape3D" parent="Room_KimiNiTodoke/Photo1"]
+[node name="Collision" type="CollisionShape3D" parent="Room_KimiNiTodoke/Photo1" unique_id=1711877098]
 shape = SubResource("Shape_Photo")
 
-[node name="Photo2" type="StaticBody3D" parent="Room_KimiNiTodoke"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.0, 2.6, -10.4)
+[node name="Photo2" type="StaticBody3D" parent="Room_KimiNiTodoke" unique_id=1721396635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2.6, -10.4)
 script = ExtResource("2_interactable")
 prompt_text = "Amati Foto Kenangan 2"
 exhibit_title = "Foto 2: Di Bawah Ranting Sakura Bersama Kazehaya"
 exhibit_description = "Momen hari pertama masuk SMA di bawah pohon sakura. Senyuman tulus Kazehaya adalah sinar mentari pertama yang menerangi hari-hari Sawako."
 
-[node name="Frame" type="MeshInstance3D" parent="Room_KimiNiTodoke/Photo2"]
+[node name="Frame" type="MeshInstance3D" parent="Room_KimiNiTodoke/Photo2" unique_id=829899845]
 mesh = SubResource("Mesh_PhotoFrame")
 
-[node name="Canvas" type="MeshInstance3D" parent="Room_KimiNiTodoke/Photo2"]
+[node name="Canvas" type="MeshInstance3D" parent="Room_KimiNiTodoke/Photo2" unique_id=270300103]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)
 mesh = SubResource("Mesh_PhotoCanvas")
 
-[node name="Collision" type="CollisionShape3D" parent="Room_KimiNiTodoke/Photo2"]
+[node name="Collision" type="CollisionShape3D" parent="Room_KimiNiTodoke/Photo2" unique_id=640144276]
 shape = SubResource("Shape_Photo")
 
-[node name="BioLectern" type="StaticBody3D" parent="Room_KimiNiTodoke"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -17.0)
+[node name="BioLectern" type="StaticBody3D" parent="Room_KimiNiTodoke" unique_id=315624680]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -17)
 script = ExtResource("2_interactable")
 prompt_text = "Baca Kisah Karakter"
 exhibit_title = "Kenangan Pribadi: Mengapa Kimi ni Todoke Mengubah Hidupku"
 exhibit_description = "Kimi ni Todoke mengajarkanku kekuatan luar biasa dari ketulusan tanpa pamrih. Di dunia yang penuh prasangka, Sawako membuktikan bahwa kebaikan yang tulus pada akhirnya akan selalu sampai ke hati orang lain."
 
-[node name="Stand" type="MeshInstance3D" parent="Room_KimiNiTodoke/BioLectern"]
+[node name="Stand" type="MeshInstance3D" parent="Room_KimiNiTodoke/BioLectern" unique_id=836389734]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("Mesh_LecternStand")
 
-[node name="Top" type="MeshInstance3D" parent="Room_KimiNiTodoke/BioLectern"]
+[node name="Top" type="MeshInstance3D" parent="Room_KimiNiTodoke/BioLectern" unique_id=120254911]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.05, 0)
 mesh = SubResource("Mesh_LecternTop")
 
-[node name="Collision" type="CollisionShape3D" parent="Room_KimiNiTodoke/BioLectern"]
+[node name="Collision" type="CollisionShape3D" parent="Room_KimiNiTodoke/BioLectern" unique_id=1049950302]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 shape = SubResource("Shape_Lectern")
 
-[node name="CenterTribute" type="StaticBody3D" parent="Room_KimiNiTodoke"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0, 0, -20.0)
+[node name="CenterTribute" type="StaticBody3D" parent="Room_KimiNiTodoke" unique_id=1730265442]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -20)
 script = ExtResource("2_interactable")
 prompt_text = "Amati Monumen Karakter"
 exhibit_title = "Memorial Bangku Kelas & Bangau Kertas Harapan"
 exhibit_description = "Bangku dan meja kelas sekolah tempat Sawako belajar dengan tekun, ditemani buku catatan dan burung bangau kertas origami lambang harapan tulus."
 
-[node name="Pedestal" type="MeshInstance3D" parent="Room_KimiNiTodoke/CenterTribute"]
+[node name="Pedestal" type="MeshInstance3D" parent="Room_KimiNiTodoke/CenterTribute" unique_id=1310713528]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 mesh = SubResource("Mesh_Pedestal")
 
-[node name="Collision" type="CollisionShape3D" parent="Room_KimiNiTodoke/CenterTribute"]
+[node name="Collision" type="CollisionShape3D" parent="Room_KimiNiTodoke/CenterTribute" unique_id=1765083565]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("Shape_Pedestal")
 
-[node name="DeskTop" type="MeshInstance3D" parent="Room_KimiNiTodoke/CenterTribute"]
+[node name="DeskTop" type="MeshInstance3D" parent="Room_KimiNiTodoke/CenterTribute" unique_id=860291871]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, -0.2)
 mesh = SubResource("Mesh_SchoolDesk")
 
-[node name="ChairSeat" type="MeshInstance3D" parent="Room_KimiNiTodoke/CenterTribute"]
+[node name="ChairSeat" type="MeshInstance3D" parent="Room_KimiNiTodoke/CenterTribute" unique_id=668058987]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0.4)
 mesh = SubResource("Mesh_SchoolChair")
 
-[node name="Crane" type="MeshInstance3D" parent="Room_KimiNiTodoke/CenterTribute"]
+[node name="Crane" type="MeshInstance3D" parent="Room_KimiNiTodoke/CenterTribute" unique_id=522334734]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.95, -0.2)
 mesh = SubResource("Mesh_Crane")
 
-[node name="Room_Josee" type="Node3D" parent="."]
+[node name="Room_Josee" type="Node3D" parent="." unique_id=1769541012]
 
-[node name="RoomLight" type="OmniLight3D" parent="Room_Josee"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0, 4.8, -20.0)
-light_color = Color(1.0, 0.97, 0.94, 1)
+[node name="RoomLight" type="OmniLight3D" parent="Room_Josee" unique_id=843727094]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 4.8, -20)
+light_color = Color(1, 0.97, 0.94, 1)
 light_energy = 2.5
 omni_range = 18.0
 
-[node name="PosterFrame" type="StaticBody3D" parent="Room_Josee"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0, 2.6, -29.6)
+[node name="PosterFrame" type="StaticBody3D" parent="Room_Josee" unique_id=1269426270]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2.6, -29.6)
 script = ExtResource("2_interactable")
 prompt_text = "Amati Poster Film"
 exhibit_title = "Poster Film: Josee, the Tiger and the Fish (ジョゼと虎と魚たち)"
-exhibit_description = "Josee, the Tiger and the Fish (2020) - Studio Bones, Sutradara Kotaro Tamura.\n\nKisah luar biasa tentang Josee (Kumiko Yamamura), gadis difabel yang memiliki imajinasi dan bakat melukis luar biasa, serta Tsuneo Suzukawa yang mengajarkannya bahwa samudra mimpi bisa diarungi bersama."
+exhibit_description = "Josee, the Tiger and the Fish (2020) - Studio Bones, Sutradara Kotaro Tamura.
 
-[node name="Frame" type="MeshInstance3D" parent="Room_Josee/PosterFrame"]
+Kisah luar biasa tentang Josee (Kumiko Yamamura), gadis difabel yang memiliki imajinasi dan bakat melukis luar biasa, serta Tsuneo Suzukawa yang mengajarkannya bahwa samudra mimpi bisa diarungi bersama."
+
+[node name="Frame" type="MeshInstance3D" parent="Room_Josee/PosterFrame" unique_id=2016058569]
 mesh = SubResource("Mesh_PosterFrame")
 
-[node name="Canvas" type="MeshInstance3D" parent="Room_Josee/PosterFrame"]
+[node name="Canvas" type="MeshInstance3D" parent="Room_Josee/PosterFrame" unique_id=427351884]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
 mesh = SubResource("Mesh_PosterCanvas")
 
-[node name="Collision" type="CollisionShape3D" parent="Room_Josee/PosterFrame"]
+[node name="Collision" type="CollisionShape3D" parent="Room_Josee/PosterFrame" unique_id=578645196]
 shape = SubResource("Shape_Poster")
 
-[node name="SpotPoster" type="SpotLight3D" parent="Room_Josee"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 13.0, 4.8, -27.0)
-light_color = Color(1.0, 0.96, 0.9, 1)
+[node name="SpotPoster" type="SpotLight3D" parent="Room_Josee" unique_id=2050859796]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 13, 4.8, -27)
+light_color = Color(1, 0.96, 0.9, 1)
 light_energy = 3.5
 spot_range = 6.5
-spot_angle = 45.0
 
-[node name="Photo1" type="StaticBody3D" parent="Room_Josee"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.0, 2.6, -10.4)
+[node name="Photo1" type="StaticBody3D" parent="Room_Josee" unique_id=1714531135]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2.6, -10.4)
 script = ExtResource("2_interactable")
 prompt_text = "Amati Foto Kenangan 1"
 exhibit_title = "Foto 1: Josee & Hamparan Samudra Luas"
 exhibit_description = "Saat pertama kali melihat laut secara langsung, Josee menyentuh deburan ombak dengan tangan gemetar. Laut yang selama ini hanya ada di dalam lukisannya akhirnya menjadi kenyataan yang bisa dirasakan."
 
-[node name="Frame" type="MeshInstance3D" parent="Room_Josee/Photo1"]
+[node name="Frame" type="MeshInstance3D" parent="Room_Josee/Photo1" unique_id=902409923]
 mesh = SubResource("Mesh_PhotoFrame")
 
-[node name="Canvas" type="MeshInstance3D" parent="Room_Josee/Photo1"]
+[node name="Canvas" type="MeshInstance3D" parent="Room_Josee/Photo1" unique_id=1625383082]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)
 mesh = SubResource("Mesh_PhotoCanvas")
 
-[node name="Collision" type="CollisionShape3D" parent="Room_Josee/Photo1"]
+[node name="Collision" type="CollisionShape3D" parent="Room_Josee/Photo1" unique_id=608952713]
 shape = SubResource("Shape_Photo")
 
-[node name="Photo2" type="StaticBody3D" parent="Room_Josee"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0, 2.6, -10.4)
+[node name="Photo2" type="StaticBody3D" parent="Room_Josee" unique_id=1530369655]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 2.6, -10.4)
 script = ExtResource("2_interactable")
 prompt_text = "Amati Foto Kenangan 2"
 exhibit_title = "Foto 2: Josee di Kursi Rodanya"
 exhibit_description = "Di balik sikapnya yang galak, Josee memiliki ketakutan besar terhadap Harimau dunia luar. Namun kursi rodanya akhirnya menjadi kendaraan yang membawanya melompat bebas melampaui ketakutannya."
 
-[node name="Frame" type="MeshInstance3D" parent="Room_Josee/Photo2"]
+[node name="Frame" type="MeshInstance3D" parent="Room_Josee/Photo2" unique_id=255825940]
 mesh = SubResource("Mesh_PhotoFrame")
 
-[node name="Canvas" type="MeshInstance3D" parent="Room_Josee/Photo2"]
+[node name="Canvas" type="MeshInstance3D" parent="Room_Josee/Photo2" unique_id=842379417]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)
 mesh = SubResource("Mesh_PhotoCanvas")
 
-[node name="Collision" type="CollisionShape3D" parent="Room_Josee/Photo2"]
+[node name="Collision" type="CollisionShape3D" parent="Room_Josee/Photo2" unique_id=2131516237]
 shape = SubResource("Shape_Photo")
 
-[node name="BioLectern" type="StaticBody3D" parent="Room_Josee"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -17.0)
+[node name="BioLectern" type="StaticBody3D" parent="Room_Josee" unique_id=1471303929]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -17)
 script = ExtResource("2_interactable")
 prompt_text = "Baca Kisah Karakter"
 exhibit_title = "Kenangan Pribadi: Mengapa Josee Mengubah Hidupku"
 exhibit_description = "Josee mengajariku arti saling menyembuhkan. Ketika Tsuneo putus asa karena cedera penyelaman, Josee menulis buku dongeng untuk memberinya alasan baru untuk berdiri. Keterbatasan fisik tidak akan pernah bisa memenjarakan jiwa yang berani bermimpi."
 
-[node name="Stand" type="MeshInstance3D" parent="Room_Josee/BioLectern"]
+[node name="Stand" type="MeshInstance3D" parent="Room_Josee/BioLectern" unique_id=2012125689]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("Mesh_LecternStand")
 
-[node name="Top" type="MeshInstance3D" parent="Room_Josee/BioLectern"]
+[node name="Top" type="MeshInstance3D" parent="Room_Josee/BioLectern" unique_id=815341910]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.05, 0)
 mesh = SubResource("Mesh_LecternTop")
 
-[node name="Collision" type="CollisionShape3D" parent="Room_Josee/BioLectern"]
+[node name="Collision" type="CollisionShape3D" parent="Room_Josee/BioLectern" unique_id=1705825106]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 shape = SubResource("Shape_Lectern")
 
-[node name="CenterTribute" type="StaticBody3D" parent="Room_Josee"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0, 0, -20.0)
+[node name="CenterTribute" type="StaticBody3D" parent="Room_Josee" unique_id=1275867139]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -20)
 script = ExtResource("2_interactable")
 prompt_text = "Amati Monumen Karakter"
 exhibit_title = "Memorial Kursi Roda Kebebasan & Kanvas Laut Josee"
 exhibit_description = "Memorial kursi roda vintage Josee berdampingan dengan standing easel kanvas cat air tempat Josee melukiskan mimpinya tentang laut dan ikan terbang."
 
-[node name="Pedestal" type="MeshInstance3D" parent="Room_Josee/CenterTribute"]
+[node name="Pedestal" type="MeshInstance3D" parent="Room_Josee/CenterTribute" unique_id=1069289685]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 mesh = SubResource("Mesh_Pedestal")
 
-[node name="Collision" type="CollisionShape3D" parent="Room_Josee/CenterTribute"]
+[node name="Collision" type="CollisionShape3D" parent="Room_Josee/CenterTribute" unique_id=1616403123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("Shape_Pedestal")
 
-[node name="Seat" type="MeshInstance3D" parent="Room_Josee/CenterTribute"]
+[node name="Seat" type="MeshInstance3D" parent="Room_Josee/CenterTribute" unique_id=486613948]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.85, 0)
 mesh = SubResource("Mesh_WheelchairSeat")
 
-[node name="Back" type="MeshInstance3D" parent="Room_Josee/CenterTribute"]
+[node name="Back" type="MeshInstance3D" parent="Room_Josee/CenterTribute" unique_id=1485987077]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.25, 0.3)
 mesh = SubResource("Mesh_WheelchairBack")
 
-[node name="WheelL" type="MeshInstance3D" parent="Room_Josee/CenterTribute"]
+[node name="WheelL" type="MeshInstance3D" parent="Room_Josee/CenterTribute" unique_id=1232571194]
 transform = Transform3D(0, 0, 1, 1, 0, 0, 0, 1, 0, -0.76, 0.82, 0)
 mesh = SubResource("Mesh_Wheel")
 
-[node name="WheelR" type="MeshInstance3D" parent="Room_Josee/CenterTribute"]
+[node name="WheelR" type="MeshInstance3D" parent="Room_Josee/CenterTribute" unique_id=467563205]
 transform = Transform3D(0, 0, 1, 1, 0, 0, 0, 1, 0, -0.04, 0.82, 0)
 mesh = SubResource("Mesh_Wheel")
 
-[node name="Easel" type="MeshInstance3D" parent="Room_Josee/CenterTribute"]
+[node name="Easel" type="MeshInstance3D" parent="Room_Josee/CenterTribute" unique_id=1688997797]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 1.15, 0)
 mesh = SubResource("Mesh_Easel")
 
-[node name="Canvas" type="MeshInstance3D" parent="Room_Josee/CenterTribute"]
+[node name="Canvas" type="MeshInstance3D" parent="Room_Josee/CenterTribute" unique_id=1322058298]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0.55, 1.25, 0.15)
 mesh = SubResource("Mesh_EaselCanvas")
 
-[node name="Player" parent="." instance=ExtResource("1_player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 5.0)
+[node name="Player" parent="." unique_id=1159582584 instance=ExtResource("1_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5)

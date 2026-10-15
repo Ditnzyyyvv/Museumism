@@ -11,6 +11,20 @@ height = 1.8
 radius = 0.4
 height = 1.8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_infocard"]
+bg_color = Color(0.07, 0.08, 0.11, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.72, 0.35, 0.9)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.6)
+shadow_size = 14
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_player")
 
@@ -62,20 +76,6 @@ grow_vertical = 2
 mouse_filter = 2
 text = "[E] Amati"
 horizontal_alignment = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_infocard"]
-bg_color = Color(0.07, 0.08, 0.11, 0.94)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.85, 0.72, 0.35, 0.9)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-shadow_color = Color(0, 0, 0, 0.6)
-shadow_size = 14
 
 [node name="InfoCard" type="PanelContainer" parent="HUD"]
 visible = false

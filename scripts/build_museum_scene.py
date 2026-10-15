@@ -1473,11 +1473,25 @@ def generate_main_scene():
     out.append('transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 9.0)')
     out.append('')
 
-    content = '\n'.join(out)
+    import re
+    blocks = re.split(r'\n(?=\[)', '\n'.join(out))
+    header = blocks[0]
+    ext_res = [b.strip() for b in blocks[1:] if b.startswith('[ext_resource')]
+    sub_res = [b.strip() for b in blocks[1:] if b.startswith('[sub_resource')]
+    nodes = [b.strip() for b in blocks[1:] if b.startswith('[node')]
+
+    total_steps = len(ext_res) + len(sub_res) + 1
+    header = re.sub(r'load_steps=\d+', f'load_steps={total_steps}', header)
+
+    new_text = header.strip() + '\n\n'
+    new_text += '\n\n'.join(ext_res) + '\n\n'
+    new_text += '\n\n'.join(sub_res) + '\n\n'
+    new_text += '\n\n'.join(nodes) + '\n'
+
     target_path = 'scenes/main.tscn'
     with open(target_path, 'w', encoding='utf-8') as f:
-        f.write(content)
-    print(f"Successfully generated {target_path} ({len(content)} bytes, {len(out)} lines)")
+        f.write(new_text)
+    print(f"Successfully generated {target_path} ({len(new_text)} bytes, {len(nodes)} nodes, load_steps={total_steps})")
 
 if __name__ == '__main__':
     generate_main_scene()

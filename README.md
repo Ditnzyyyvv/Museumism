@@ -1,6 +1,48 @@
-# 🏛️ Museum Art & Artifact - Godot Engine 4 (3D First-Person Exploration)
+# 🏛️ Museumism: Museum Karakter Fiksi Hidupku
+### 3D First-Person Exploration & Memorial Gallery (Godot Engine 4)
 
-Template game 3D First-Person dengan tema **Museum Seni & Artifak** menggunakan **Godot Engine 4**. Didesain khusus untuk genre eksplorasi santai (*walking simulator / interactive exhibition*) dengan tampilan layar yang bersih dan imersif.
+Game eksplorasi first-person bertemakan **Museum Memorial Karakter Fiksi** yang dibuat untuk mengenang karakter-karakter fiksi berharga yang telah hadir, menemani, dan memberikan inspirasi mendalam dalam perjalanan hidup.
+
+---
+
+## 🌟 Konsep & Struktur Museum
+
+Museum ini dirancang dengan tata letak **Lorong Panjang (Grand Hallway)** yang megah dengan karpet merah beraksen emas. Di sepanjang lorong, terdapat 4 sayap ruangan (*1 Topik 1 Ruang*) dengan pintu portal tematik khusus:
+
+### 🚀 Pintu 1 (Section 01): WALL-E (2008) — Deep Space & Cosmic Love
+* **Tema Tembok Luar Pintu**: Dinding kosmik luar angkasa bernuansa nebula ungu-sian, taburan bintang berkilau, dan portal bercahaya neon biru futuristik.
+* **Isi Ruangan**:
+  * **Centerpiece 3D**: Patung penghormatan robot WALL-E berbadan kuning dengan mata binokular, roda tank tread, dan sepatu boot bekas berisi tunas hijau yang hidup.
+  * **Poster Resmi**: Poster film *WALL·E (2008)* karya Pixar Animation Studios & Andrew Stanton.
+  * **Galeri Foto**: Foto WALL-E merawat koleksi nostalgianya dan momen berpegangan tangan bersama EVE.
+  * **Plakat Refleksi**: Pelajaran tentang kesetiaan, kehangatan di tengah kesendirian, dan cinta tanpa kata.
+
+### 🌸 Pintu 2 (Section 02): A Silent Voice (2016) — Jembatan Sakura & Suara Hati
+* **Tema Tembok Luar Pintu**: Dinding bernuansa lukisan cat air kelopak sakura berguguran di atas riak air jernih Sungai Suimon, dengan motif tanda silang 'X' yang perlahan lepas.
+* **Isi Ruangan**:
+  * **Centerpiece 3D**: Kolam zen berbatu dengan jembatan lengkung kayu merah, taburan kelopak sakura, dan Buku Catatan Komunikasi Shoko Nishimiya yang berpendar lembut.
+  * **Poster Resmi**: Poster film anime *A Silent Voice (聲の形)* karya Kyoto Animation & Naoko Yamada.
+  * **Galeri Foto**: Buku catatan pertama Shoko dan senyuman tulus Shoko di jembatan taman.
+  * **Plakat Refleksi**: Pelajaran tentang keberanian membuka telinga untuk mendengar suara hati orang lain, melepaskan rasa bersalah, dan saling memaafkan.
+
+### 🍃 Pintu 3 (Section 03): Kimi ni Todoke — Semilir Angin Musim Semi & Ketulusan
+* **Tema Tembok Luar Pintu**: Dinding cerah bernuansa musim semi sekolah, bunga sakura mekar di bawah sinar mentari pagi, dan semilir angin lembut.
+* **Isi Ruangan**:
+  * **Centerpiece 3D**: Bangku dan meja kelas sekolah Sawako Kuronuma dan Shota Kazehaya, buku catatan, burung bangau kertas (origami), dan ranting sakura.
+  * **Poster Resmi**: Poster anime *Kimi ni Todoke (君に届け)* karya Production I.G & Karuho Shiina.
+  * **Galeri Foto**: Senyuman tulus Sawako yang menyinari rumor kelam dan momen pertama di bawah pohon sakura bersama Kazehaya.
+  * **Plakat Refleksi**: Pelajaran tentang kekuatan kebaikan tanpa pamrih, bahwa ketulusan hati pada akhirnya akan selalu sampai ke hati orang lain.
+
+### 🌊 Pintu 4 (Section 04): Josee, the Tiger and the Fish (2020) — Samudra Kebebasan & Sayap Impian
+* **Tema Tembok Luar Pintu**: Dinding gradasi biru laut dalam, sinar matahari yang membelah permukaan air, dan siluet ikan-ikan tropis yang berenang bebas.
+* **Isi Ruangan**:
+  * **Centerpiece 3D**: Kursi roda klasik Josee (Kumiko) bersanding dengan standing easel kanvas cat air lukisan laut dan ikan terbang.
+  * **Poster Resmi**: Poster film anime *Josee, the Tiger and the Fish (ジョゼと虎と魚たち)* karya Studio Bones & Kotaro Tamura.
+  * **Galeri Foto**: Josee saat pertama kali menyentuh deburan ombak laut dan keteguhan hatinya di kursi roda.
+  * **Plakat Refleksi**: Pelajaran tentang saling menyembuhkan, bahwa keterbatasan fisik tidak akan pernah bisa memenjarakan jiwa yang berani bermimpi dan terbang bebas.
+
+### 🕊️ Sanctuary of Stories (Ujung Lorong)
+Di ujung lorong panjang terdapat ruang renungan akhir dengan plakat epilog: refleksi mendalam mengenai bagaimana karakter-karakter fiksi ini tetap hidup dan memberi kekuatan di dunia nyata.
 
 ---
 
@@ -8,65 +50,45 @@ Template game 3D First-Person dengan tema **Museum Seni & Artifak** menggunakan 
 
 | Tombol / Input | Aksi | Keterangan |
 | :--- | :--- | :--- |
-| **W, A, S, D** | **Bergerak** | Berjalan santai menelusuri lorong museum |
-| **Shift** (Tahan) | **Berlari (Sprint)** | Melangkah lebih cepat dengan efek dinamis |
-| **E** | **Interaksi** | Membaca plakat & kartu deskripsi karya seni |
+| **W, A, S, D** | **Bergerak** | Berjalan santai menelusuri lorong dan sayap ruangan museum |
+| **Shift** (Tahan) | **Berlari (Sprint)** | Melangkah lebih cepat disertai efek *Dynamic FOV* |
+| **E** | **Interaksi** | Membaca plakat, poster, foto kenangan, atau monumen 3D |
 | **Spasi (Space)** | **Melompat** | Lompat saat menjelajahi ruangan |
 | **Gerakan Mouse** | **Melihat Sekeliling** | Rotasi kamera First-Person (Pitch & Yaw) |
-| **Escape (Esc)** | **Tutup Info / Kursor** | Menutup kartu karya seni atau membuka kunci kursor mouse |
-| **Klik Kiri Mouse** | **Kunci Kursor** | Mengunci mouse kembali saat jendela game aktif |
-
----
-
-## ✨ Fitur & Perubahan Terbaru
-
-1. **Dot Crosshair Minimalis**:
-   - Crosshair garis bidik dihapus sepenuhnya dan digantikan oleh **titik kecil (dot reticle)** lembut di tengah layar.
-   - Saat Anda mengarahkan pandangan ke karya seni atau plakat, dot akan otomatis membesar lembut dan memunculkan petunjuk interaksi `[E] Amati`.
-
-2. **Tampilan Layar Bersih (Unobstructed View)**:
-   - Panel dashboard di pojok kiri atas telah dihilangkan sehingga Anda dapat menikmati visual museum dan mengamati karya seni tanpa gangguan elemen UI.
-   - Kartu informasi karya seni hanya muncul saat Anda menekan tombol **E** di depan objek pameran, dan dapat ditutup kembali dengan **E** atau **Esc**.
-
-3. **Lingkungan Museum 3D yang Lengkap**:
-   - **Lobby Masuk**: Dilengkapi meja penerima tamu dan plakat panduan museum.
-   - **Atrium Utama**: Ruang megah dengan karya pameran utama: **Monolit Kristal Abadi** yang berpendar cahaya biru toska.
-   - **Wing Barat (Galeri Lukisan)**: Dinding galeri yang memajang lukisan cat minyak berbingkai emas (*Senja Abadi, Samudra Biru, Hutan Zamrud, Geometri Kosmik*) lengkap dengan lampu sorot (*spotlight*).
-   - **Wing Timur (Galeri Patung)**: Menampilkan patung logam reflektif di atas pedestal marmer (*Torus Emas Murni, Keseimbangan Kromatik, Piramida Obsidian*).
-   - **Sanctuary Utara**: Tempat kehormatan untuk **Fragmen Bintang (Starlight Relic)** yang bersinar keemasan.
-   - **Fasilitas Pengunjung**: Bangku kayu santai di berbagai sudut ruangan dan balok arsitektur langit-langit yang elegan.
-
-4. **Sistem Pergerakan Terintegrasi**:
-   - Kontrol WASD halus dengan akselerasi alami.
-   - Sprinting dengan tombol Shift disertai *Dynamic FOV* lembut.
-   - Goyangan kamera langkah kaki (*Head Bobbing*) realistis.
+| **Escape (Esc)** | **Tutup Info / Kursor** | Menutup kartu penjelasan karya atau membuka kunci kursor mouse |
+| **Klik Kiri Mouse** | **Kunci Kursor** | Mengunci kursor mouse kembali saat jendela game aktif |
 
 ---
 
 ## 📁 Struktur File Proyek
 
 ```text
-Kimi ni Todoke/
-├── project.godot           # Konfigurasi proyek & Input Map (WASD, Shift, E, Space, Esc)
-├── icon.svg                # Ikon proyek
-├── .gitignore              # Mengabaikan file cache .godot/
-├── README.md               # Dokumentasi panduan
+Museumism/
+├── project.godot           # Konfigurasi proyek Godot 4 & Input Map
+├── icon.svg                # Ikon aplikasi
+├── .gitignore              # Git ignore standar Godot (.godot/, dll.)
+├── README.md               # Dokumentasi proyek
+├── assets/
+│   ├── posters/            # Poster resmi film (Wall-E, Silent Voice, Kimi ni Todoke, Josee)
+│   ├── photos/             # Foto & cuplikan kenangan karakter
+│   └── themes/             # Tekstur artistik dinding gerbang portal (Space, Sakura, Spring, Ocean)
 ├── scenes/
-│   ├── player.tscn         # Karakter pemain (Kamera, RayCast interaksi, Dot Reticle, Info Card)
-│   └── main.tscn           # Arsitektur interior museum, pencahayaan, & karya seni
+│   ├── player.tscn         # Pemain FPS (Kamera, Raycast, Dot Reticle, InfoCard Glassmorphism)
+│   └── main.tscn           # Lorong panjang, 4 sayap ruangan tematik, pencahayaan & pameran 3D
 └── scripts/
-    ├── player.gd           # Skrip pengontrol karakter & logika interaksi E
-    ├── dot_reticle.gd      # Skrip titik reticle dinamis di tengah layar
-    └── interactable.gd     # Komponen objek pameran museum yang bisa diamati
+    ├── player.gd           # Logika gerak pemain, headbob, fov, dan kartu info
+    ├── dot_reticle.gd      # Titik bidik minimalis dinamis di tengah layar
+    ├── interactable.gd     # Komponen objek pameran yang dapat diinteraksi dengan [E]
+    ├── setup_assets.py     # Script penyiapan & pengunduhan aset grafis
+    └── build_museum_scene.py # Script generator arsitektur museum 3D
 ```
 
 ---
 
-## 🚀 Cara Membuka & Menjalankan di Godot
+## 🚀 Cara Menjalankan
 
-1. Buka aplikasi **Godot Engine 4** (4.0 s/d 4.3+).
-2. Di jendela **Project Manager**, klik tombol **Import** (Impor).
-3. Klik **Browse**, lalu arahkan ke folder:
-   `c:\Users\Lenovo\Documents\.Project\Ditnzy - Game\Kimi ni Todoke`
-4. Pilih file [`project.godot`](file:///c:/Users/Lenovo/Documents/.Project/Ditnzy%20-%20Game/Kimi%20ni%20Todoke/project.godot) dan klik **Import & Edit**.
-5. Tekan tombol **F5** (atau klik ikon **Play** di pojok kanan atas) untuk langsung menjelajahi museum!
+1. Buka aplikasi **Godot Engine 4** (4.0 s/d 4.6+).
+2. Di jendela **Project Manager**, klik tombol **Import**.
+3. Pilih file [`project.godot`](file:///c:/Users/Lenovo/Documents/.Project/Ditnzy-Game/Museumism/project.godot).
+4. Klik **Import & Edit**.
+5. Tekan tombol **F5** (atau klik ikon **Play** di kanan atas) untuk langsung menjelajahi museum!

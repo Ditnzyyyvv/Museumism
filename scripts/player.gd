@@ -51,7 +51,7 @@ class_name FPSPlayer
 @onready var interact_prompt: Label = $HUD/InteractPrompt
 @onready var info_card: PanelContainer = $HUD/InfoCard
 @onready var info_title: Label = $HUD/InfoCard/Margin/VBox/TitleLabel
-@onready var info_desc: Label = $HUD/InfoCard/Margin/VBox/DescLabel
+@onready var info_desc: Control = $HUD/InfoCard/Margin/VBox/DescLabel
 
 # Status internal
 var is_sprinting: bool = false

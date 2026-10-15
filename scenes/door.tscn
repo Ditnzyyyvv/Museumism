@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://scripts/door.gd" id="1_door"]
+[ext_resource type="Script" path="res://scripts/door_trigger.gd" id="2_trigger"]
+
+[sub_resource type="StandardMaterial3D" id="Mat_DoorFrame"]
+albedo_color = Color(0.12, 0.13, 0.16, 1)
+metallic = 0.85
+roughness = 0.25
+
+[sub_resource type="StandardMaterial3D" id="Mat_DoorGlass"]
+transparency = 1
+albedo_color = Color(0.2, 0.28, 0.38, 0.75)
+roughness = 0.1
+metallic = 0.3
+
+[sub_resource type="StandardMaterial3D" id="Mat_DoorHandle"]
+albedo_color = Color(0.88, 0.75, 0.35, 1)
+metallic = 0.9
+roughness = 0.2
+
+[sub_resource type="BoxShape3D" id="Shape_Blocker"]
+size = Vector3(0.35, 3.5, 3.6)
+
+[sub_resource type="BoxShape3D" id="Shape_Trigger"]
+size = Vector3(1.6, 3.5, 3.8)
+
+[sub_resource type="BoxMesh" id="Mesh_LeafFrame"]
+material = SubResource("Mat_DoorFrame")
+size = Vector3(0.08, 3.4, 1.76)
+
+[sub_resource type="BoxMesh" id="Mesh_LeafGlass"]
+material = SubResource("Mat_DoorGlass")
+size = Vector3(0.04, 3.0, 1.4)
+
+[sub_resource type="BoxMesh" id="Mesh_Handle"]
+material = SubResource("Mat_DoorHandle")
+size = Vector3(0.06, 0.8, 0.04)
+
+[node name="Door" type="StaticBody3D"]
+script = ExtResource("1_door")
+
+[node name="BlockerCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+shape = SubResource("Shape_Blocker")
+
+[node name="InteractionArea" type="Area3D" parent="."]
+script = ExtResource("2_trigger")
+
+[node name="Collision" type="CollisionShape3D" parent="InteractionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+shape = SubResource("Shape_Trigger")
+
+[node name="LeftLeaf" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -0.9)
+
+[node name="Frame" type="MeshInstance3D" parent="LeftLeaf"]
+mesh = SubResource("Mesh_LeafFrame")
+
+[node name="Glass" type="MeshInstance3D" parent="LeftLeaf"]
+mesh = SubResource("Mesh_LeafGlass")
+
+[node name="Handle" type="MeshInstance3D" parent="LeftLeaf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, -0.3, 0.7)
+mesh = SubResource("Mesh_Handle")
+
+[node name="RightLeaf" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0.9)
+
+[node name="Frame" type="MeshInstance3D" parent="RightLeaf"]
+mesh = SubResource("Mesh_LeafFrame")
+
+[node name="Glass" type="MeshInstance3D" parent="RightLeaf"]
+mesh = SubResource("Mesh_LeafGlass")
+
+[node name="Handle" type="MeshInstance3D" parent="RightLeaf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, -0.3, -0.7)
+mesh = SubResource("Mesh_Handle")

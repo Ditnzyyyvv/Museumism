@@ -122,9 +122,14 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	# 1. Gravitasi
+	# 1. Gravitasi & Proteksi Void
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+
+	# Anti-void respawn fail-safe
+	if global_position.y < -5.0:
+		velocity = Vector3.ZERO
+		global_position = Vector3(0, 1.2, 5.0)
 
 	# 2. Input Lompat (Spasi)
 	if Input.is_action_just_pressed("jump") and is_on_floor():

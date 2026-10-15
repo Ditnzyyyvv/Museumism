@@ -1,0 +1,552 @@
+[gd_scene load_steps=47 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="2_interactable"]
+
+[sub_resource type="Environment" id="Environment_museum"]
+background_mode = 1
+background_color = Color(0.06, 0.06, 0.08, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.35, 0.35, 0.38, 1)
+ambient_light_energy = 0.9
+tonemap_mode = 2
+glow_enabled = true
+glow_intensity = 0.5
+glow_bloom = 0.25
+
+[sub_resource type="StandardMaterial3D" id="Mat_Floor"]
+albedo_color = Color(0.12, 0.11, 0.13, 1)
+roughness = 0.22
+metallic = 0.1
+
+[sub_resource type="BoxMesh" id="Mesh_Floor"]
+material = SubResource("Mat_Floor")
+size = Vector3(26, 0.5, 34)
+
+[sub_resource type="BoxShape3D" id="Shape_Floor"]
+size = Vector3(26, 0.5, 34)
+
+[sub_resource type="StandardMaterial3D" id="Mat_Ceiling"]
+albedo_color = Color(0.15, 0.15, 0.17, 1)
+roughness = 0.9
+
+[sub_resource type="BoxMesh" id="Mesh_Ceiling"]
+material = SubResource("Mat_Ceiling")
+size = Vector3(26, 0.5, 34)
+
+[sub_resource type="StandardMaterial3D" id="Mat_Wall"]
+albedo_color = Color(0.92, 0.91, 0.88, 1)
+roughness = 0.85
+
+[sub_resource type="BoxMesh" id="Mesh_WallZ"]
+material = SubResource("Mat_Wall")
+size = Vector3(26, 5, 0.5)
+
+[sub_resource type="BoxShape3D" id="Shape_WallZ"]
+size = Vector3(26, 5, 0.5)
+
+[sub_resource type="BoxMesh" id="Mesh_WallX"]
+material = SubResource("Mat_Wall")
+size = Vector3(0.5, 5, 34)
+
+[sub_resource type="BoxShape3D" id="Shape_WallX"]
+size = Vector3(0.5, 5, 34)
+
+[sub_resource type="BoxMesh" id="Mesh_Partition"]
+material = SubResource("Mat_Wall")
+size = Vector3(0.4, 5, 14)
+
+[sub_resource type="BoxShape3D" id="Shape_Partition"]
+size = Vector3(0.4, 5, 14)
+
+[sub_resource type="StandardMaterial3D" id="Mat_Beam"]
+albedo_color = Color(0.08, 0.08, 0.1, 1)
+roughness = 0.6
+
+[sub_resource type="BoxMesh" id="Mesh_Beam"]
+material = SubResource("Mat_Beam")
+size = Vector3(26, 0.35, 0.6)
+
+[sub_resource type="StandardMaterial3D" id="Mat_Pedestal"]
+albedo_color = Color(0.95, 0.95, 0.97, 1)
+roughness = 0.2
+
+[sub_resource type="CylinderMesh" id="Mesh_PedestalCenter"]
+material = SubResource("Mat_Pedestal")
+top_radius = 1.6
+bottom_radius = 1.8
+height = 0.8
+
+[sub_resource type="BoxMesh" id="Mesh_PedestalSquare"]
+material = SubResource("Mat_Pedestal")
+size = Vector3(1.2, 1.0, 1.2)
+
+[sub_resource type="BoxShape3D" id="Shape_PedestalSquare"]
+size = Vector3(1.3, 1.2, 1.3)
+
+[sub_resource type="BoxShape3D" id="Shape_PedestalCenter"]
+size = Vector3(3.4, 1.0, 3.4)
+
+[sub_resource type="StandardMaterial3D" id="Mat_Wood"]
+albedo_color = Color(0.28, 0.17, 0.11, 1)
+roughness = 0.35
+
+[sub_resource type="BoxMesh" id="Mesh_Bench"]
+material = SubResource("Mat_Wood")
+size = Vector3(2.4, 0.45, 0.9)
+
+[sub_resource type="BoxShape3D" id="Shape_Bench"]
+size = Vector3(2.4, 0.45, 0.9)
+
+[sub_resource type="StandardMaterial3D" id="Mat_Frame"]
+albedo_color = Color(0.85, 0.72, 0.32, 1)
+metallic = 0.85
+roughness = 0.25
+
+[sub_resource type="BoxMesh" id="Mesh_Frame"]
+material = SubResource("Mat_Frame")
+size = Vector3(0.1, 2.2, 3.2)
+
+[sub_resource type="BoxShape3D" id="Shape_Painting"]
+size = Vector3(0.6, 2.2, 3.2)
+
+[sub_resource type="StandardMaterial3D" id="Mat_Art1"]
+albedo_color = Color(0.85, 0.35, 0.16, 1)
+roughness = 0.6
+
+[sub_resource type="BoxMesh" id="Mesh_Canvas1"]
+material = SubResource("Mat_Art1")
+size = Vector3(0.12, 1.9, 2.9)
+
+[sub_resource type="StandardMaterial3D" id="Mat_Art2"]
+albedo_color = Color(0.12, 0.45, 0.78, 1)
+roughness = 0.6
+
+[sub_resource type="BoxMesh" id="Mesh_Canvas2"]
+material = SubResource("Mat_Art2")
+size = Vector3(0.12, 1.9, 2.9)
+
+[sub_resource type="StandardMaterial3D" id="Mat_Art3"]
+albedo_color = Color(0.15, 0.55, 0.32, 1)
+roughness = 0.6
+
+[sub_resource type="BoxMesh" id="Mesh_Canvas3"]
+material = SubResource("Mat_Art3")
+size = Vector3(0.12, 1.9, 2.9)
+
+[sub_resource type="StandardMaterial3D" id="Mat_Art4"]
+albedo_color = Color(0.42, 0.18, 0.62, 1)
+roughness = 0.6
+
+[sub_resource type="BoxMesh" id="Mesh_Canvas4"]
+material = SubResource("Mat_Art4")
+size = Vector3(0.12, 1.9, 2.9)
+
+[sub_resource type="StandardMaterial3D" id="Mat_Crystal"]
+albedo_color = Color(0.2, 0.85, 0.95, 1)
+emission_enabled = true
+emission = Color(0.25, 0.9, 1.0, 1)
+emission_energy_multiplier = 2.5
+roughness = 0.1
+
+[sub_resource type="PrismMesh" id="Mesh_CrystalMonolith"]
+material = SubResource("Mat_Crystal")
+left_to_right = 0.5
+size = Vector3(1.2, 2.6, 1.2)
+
+[sub_resource type="StandardMaterial3D" id="Mat_Gold"]
+albedo_color = Color(1, 0.82, 0.22, 1)
+metallic = 0.95
+roughness = 0.15
+
+[sub_resource type="TorusMesh" id="Mesh_GoldTorus"]
+material = SubResource("Mat_Gold")
+inner_radius = 0.45
+outer_radius = 0.85
+
+[sub_resource type="StandardMaterial3D" id="Mat_Chrome"]
+albedo_color = Color(0.92, 0.94, 0.96, 1)
+metallic = 1.0
+roughness = 0.05
+
+[sub_resource type="SphereMesh" id="Mesh_ChromeSphere"]
+material = SubResource("Mat_Chrome")
+radius = 0.6
+height = 1.2
+
+[sub_resource type="StandardMaterial3D" id="Mat_Obsidian"]
+albedo_color = Color(0.06, 0.06, 0.08, 1)
+metallic = 0.85
+roughness = 0.15
+
+[sub_resource type="PrismMesh" id="Mesh_ObsidianPyramid"]
+material = SubResource("Mat_Obsidian")
+size = Vector3(1.0, 1.6, 1.0)
+
+[sub_resource type="StandardMaterial3D" id="Mat_StarRelic"]
+albedo_color = Color(1, 0.7, 0.2, 1)
+emission_enabled = true
+emission = Color(1, 0.7, 0.2, 1)
+emission_energy_multiplier = 2.2
+roughness = 0.1
+
+[sub_resource type="SphereMesh" id="Mesh_StarRelic"]
+material = SubResource("Mat_StarRelic")
+radius = 0.45
+height = 0.9
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_museum")
+
+[node name="MuseumStructure" type="Node3D" parent="."]
+
+[node name="Floor" type="StaticBody3D" parent="MuseumStructure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -6)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MuseumStructure/Floor"]
+mesh = SubResource("Mesh_Floor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MuseumStructure/Floor"]
+shape = SubResource("Shape_Floor")
+
+[node name="Ceiling" type="MeshInstance3D" parent="MuseumStructure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.25, -6)
+mesh = SubResource("Mesh_Ceiling")
+
+[node name="WallNorth" type="StaticBody3D" parent="MuseumStructure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -23)
+
+[node name="Mesh" type="MeshInstance3D" parent="MuseumStructure/WallNorth"]
+mesh = SubResource("Mesh_WallZ")
+
+[node name="Collision" type="CollisionShape3D" parent="MuseumStructure/WallNorth"]
+shape = SubResource("Shape_WallZ")
+
+[node name="WallSouth" type="StaticBody3D" parent="MuseumStructure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 11)
+
+[node name="Mesh" type="MeshInstance3D" parent="MuseumStructure/WallSouth"]
+mesh = SubResource("Mesh_WallZ")
+
+[node name="Collision" type="CollisionShape3D" parent="MuseumStructure/WallSouth"]
+shape = SubResource("Shape_WallZ")
+
+[node name="WallWest" type="StaticBody3D" parent="MuseumStructure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2.5, -6)
+
+[node name="Mesh" type="MeshInstance3D" parent="MuseumStructure/WallWest"]
+mesh = SubResource("Mesh_WallX")
+
+[node name="Collision" type="CollisionShape3D" parent="MuseumStructure/WallWest"]
+shape = SubResource("Shape_WallX")
+
+[node name="WallEast" type="StaticBody3D" parent="MuseumStructure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2.5, -6)
+
+[node name="Mesh" type="MeshInstance3D" parent="MuseumStructure/WallEast"]
+mesh = SubResource("Mesh_WallX")
+
+[node name="Collision" type="CollisionShape3D" parent="MuseumStructure/WallEast"]
+shape = SubResource("Shape_WallX")
+
+[node name="PartitionWest" type="StaticBody3D" parent="MuseumStructure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2.5, -12)
+
+[node name="Mesh" type="MeshInstance3D" parent="MuseumStructure/PartitionWest"]
+mesh = SubResource("Mesh_Partition")
+
+[node name="Collision" type="CollisionShape3D" parent="MuseumStructure/PartitionWest"]
+shape = SubResource("Shape_Partition")
+
+[node name="PartitionEast" type="StaticBody3D" parent="MuseumStructure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2.5, -12)
+
+[node name="Mesh" type="MeshInstance3D" parent="MuseumStructure/PartitionEast"]
+mesh = SubResource("Mesh_Partition")
+
+[node name="Collision" type="CollisionShape3D" parent="MuseumStructure/PartitionEast"]
+shape = SubResource("Shape_Partition")
+
+[node name="CeilingBeams" type="Node3D" parent="MuseumStructure"]
+
+[node name="Beam1" type="MeshInstance3D" parent="MuseumStructure/CeilingBeams"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.0, -18)
+mesh = SubResource("Mesh_Beam")
+
+[node name="Beam2" type="MeshInstance3D" parent="MuseumStructure/CeilingBeams"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.0, -12)
+mesh = SubResource("Mesh_Beam")
+
+[node name="Beam3" type="MeshInstance3D" parent="MuseumStructure/CeilingBeams"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.0, -6)
+mesh = SubResource("Mesh_Beam")
+
+[node name="Beam4" type="MeshInstance3D" parent="MuseumStructure/CeilingBeams"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.0, 0)
+mesh = SubResource("Mesh_Beam")
+
+[node name="Beam5" type="MeshInstance3D" parent="MuseumStructure/CeilingBeams"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.0, 6)
+mesh = SubResource("Mesh_Beam")
+
+[node name="Lighting" type="Node3D" parent="."]
+
+[node name="LightAtrium" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -5)
+light_color = Color(1, 0.95, 0.88, 1)
+light_energy = 2.0
+omni_range = 14.0
+
+[node name="LightLobby" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 6)
+light_color = Color(1, 0.94, 0.86, 1)
+light_energy = 1.8
+omni_range = 12.0
+
+[node name="LightWestWing" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 4.5, -12)
+light_color = Color(1, 0.96, 0.92, 1)
+light_energy = 1.8
+omni_range = 14.0
+
+[node name="LightEastWing" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 4.5, -12)
+light_color = Color(1, 0.95, 0.9, 1)
+light_energy = 1.8
+omni_range = 14.0
+
+[node name="SpotPainting1" type="SpotLight3D" parent="Lighting"]
+transform = Transform3D(0, 0, -1, 0.707107, 0.707107, 0, 0.707107, -0.707107, 0, -10.5, 4.0, -7.5)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 3.0
+spot_range = 7.0
+spot_angle = 45.0
+
+[node name="SpotPainting2" type="SpotLight3D" parent="Lighting"]
+transform = Transform3D(0, 0, -1, 0.707107, 0.707107, 0, 0.707107, -0.707107, 0, -10.5, 4.0, -13.5)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 3.0
+spot_range = 7.0
+spot_angle = 45.0
+
+[node name="SpotPainting3" type="SpotLight3D" parent="Lighting"]
+transform = Transform3D(0, 0, -1, 0.707107, 0.707107, 0, 0.707107, -0.707107, 0, -10.5, 4.0, -19.5)
+light_color = Color(1, 0.96, 0.9, 1)
+light_energy = 3.0
+spot_range = 7.0
+spot_angle = 45.0
+
+[node name="SpotSanctuary" type="SpotLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 4.8, -20.5)
+light_color = Color(1, 0.9, 0.75, 1)
+light_energy = 3.5
+spot_range = 8.0
+spot_angle = 40.0
+
+[node name="Furniture" type="Node3D" parent="."]
+
+[node name="BenchLobby" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, 2.5)
+
+[node name="Mesh" type="MeshInstance3D" parent="Furniture/BenchLobby"]
+mesh = SubResource("Mesh_Bench")
+
+[node name="Collision" type="CollisionShape3D" parent="Furniture/BenchLobby"]
+shape = SubResource("Shape_Bench")
+
+[node name="BenchWest" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -8.5, 0.22, -13.5)
+
+[node name="Mesh" type="MeshInstance3D" parent="Furniture/BenchWest"]
+mesh = SubResource("Mesh_Bench")
+
+[node name="Collision" type="CollisionShape3D" parent="Furniture/BenchWest"]
+shape = SubResource("Shape_Bench")
+
+[node name="BenchEast" type="StaticBody3D" parent="Furniture"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 8.5, 0.22, -13.5)
+
+[node name="Mesh" type="MeshInstance3D" parent="Furniture/BenchEast"]
+mesh = SubResource("Mesh_Bench")
+
+[node name="Collision" type="CollisionShape3D" parent="Furniture/BenchEast"]
+shape = SubResource("Shape_Bench")
+
+[node name="Exhibits" type="Node3D" parent="."]
+
+[node name="WelcomeDesk" type="StaticBody3D" parent="Exhibits"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 7.5)
+script = ExtResource("2_interactable")
+prompt_text = "Baca Panduan Museum"
+exhibit_title = "Selamat Datang di Museum Kimi ni Todoke"
+exhibit_description = "Selamat datang di pameran seni dan artifak. Di ruang ini Anda dapat bereksplorasi secara leluasa.\n• WASD: Berjalan santai\n• Shift: Berlari\n• E: Berinteraksi dan membaca kisah setiap karya seni."
+
+[node name="DeskMesh" type="MeshInstance3D" parent="Exhibits/WelcomeDesk"]
+mesh = SubResource("Mesh_Bench")
+
+[node name="Collision" type="CollisionShape3D" parent="Exhibits/WelcomeDesk"]
+shape = SubResource("Shape_Bench")
+
+[node name="Exhibit_Centerpiece" type="StaticBody3D" parent="Exhibits"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+script = ExtResource("2_interactable")
+prompt_text = "Amati Monolit Kristal"
+exhibit_title = "Monolit Kristal Abadi"
+exhibit_description = "Artifak silindris kristalin yang memancarkan pendaran cahaya alami tanpa henti. Dipercaya oleh para peneliti sebagai resonator energi kuno dari peradaban yang hilang ribuan tahun silam."
+
+[node name="PedestalMesh" type="MeshInstance3D" parent="Exhibits/Exhibit_Centerpiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("Mesh_PedestalCenter")
+
+[node name="CrystalMesh" type="MeshInstance3D" parent="Exhibits/Exhibit_Centerpiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+mesh = SubResource("Mesh_CrystalMonolith")
+
+[node name="Collision" type="CollisionShape3D" parent="Exhibits/Exhibit_Centerpiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+shape = SubResource("Shape_PedestalCenter")
+
+[node name="Painting1_Sunset" type="StaticBody3D" parent="Exhibits"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7, 2.4, -7.5)
+script = ExtResource("2_interactable")
+prompt_text = "Amati Lukisan Senja"
+exhibit_title = "Senja Abadi di Horison (1924)"
+exhibit_description = "Karya cat minyak legendaris yang melukiskan gradasi langit senja di atas perbukitan sunyi. Sapuan warna merah bata dan emas memberikan suasana nostalgia dan kedamaian batin."
+
+[node name="FrameMesh" type="MeshInstance3D" parent="Exhibits/Painting1_Sunset"]
+mesh = SubResource("Mesh_Frame")
+
+[node name="CanvasMesh" type="MeshInstance3D" parent="Exhibits/Painting1_Sunset"]
+mesh = SubResource("Mesh_Canvas1")
+
+[node name="Collision" type="CollisionShape3D" parent="Exhibits/Painting1_Sunset"]
+shape = SubResource("Shape_Painting")
+
+[node name="Painting2_Ocean" type="StaticBody3D" parent="Exhibits"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7, 2.4, -13.5)
+script = ExtResource("2_interactable")
+prompt_text = "Amati Lukisan Samudra"
+exhibit_title = "Kedalaman Samudra Tanpa Batas"
+exhibit_description = "Lukisan abstrak aliran ekspresionisme dengan perpaduan warna biru kobalt dan sian cair. Menggambarkan ketenangan hening sekaligus kekuatan luar biasa di dasar palung laut terdalam."
+
+[node name="FrameMesh" type="MeshInstance3D" parent="Exhibits/Painting2_Ocean"]
+mesh = SubResource("Mesh_Frame")
+
+[node name="CanvasMesh" type="MeshInstance3D" parent="Exhibits/Painting2_Ocean"]
+mesh = SubResource("Mesh_Canvas2")
+
+[node name="Collision" type="CollisionShape3D" parent="Exhibits/Painting2_Ocean"]
+shape = SubResource("Shape_Painting")
+
+[node name="Painting3_Forest" type="StaticBody3D" parent="Exhibits"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7, 2.4, -19.5)
+script = ExtResource("2_interactable")
+prompt_text = "Amati Lukisan Hutan"
+exhibit_title = "Hutan Zamrud Berkabut Pagi"
+exhibit_description = "Dibuat menggunakan pigmen mineral alami zamrud murni. Lukisan ini menangkap momen kesegaran embun dingin saat cahaya matahari pertama menembus kanopi hutan pinus purba."
+
+[node name="FrameMesh" type="MeshInstance3D" parent="Exhibits/Painting3_Forest"]
+mesh = SubResource("Mesh_Frame")
+
+[node name="CanvasMesh" type="MeshInstance3D" parent="Exhibits/Painting3_Forest"]
+mesh = SubResource("Mesh_Canvas3")
+
+[node name="Collision" type="CollisionShape3D" parent="Exhibits/Painting3_Forest"]
+shape = SubResource("Shape_Painting")
+
+[node name="Painting4_Cosmic" type="StaticBody3D" parent="Exhibits"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25, 2.4, -12)
+script = ExtResource("2_interactable")
+prompt_text = "Amati Geometri Kosmik"
+exhibit_title = "Komposisi Geometri Kosmik"
+exhibit_description = "Karya seni kontemporer minimalis yang memadukan garis-garis emas di atas bidang ungu violet. Melambangkan hukum keteraturan matematis di balik luasnya angkasa raya."
+
+[node name="FrameMesh" type="MeshInstance3D" parent="Exhibits/Painting4_Cosmic"]
+mesh = SubResource("Mesh_Frame")
+
+[node name="CanvasMesh" type="MeshInstance3D" parent="Exhibits/Painting4_Cosmic"]
+mesh = SubResource("Mesh_Canvas4")
+
+[node name="Collision" type="CollisionShape3D" parent="Exhibits/Painting4_Cosmic"]
+shape = SubResource("Shape_Painting")
+
+[node name="Sculpture1_Torus" type="StaticBody3D" parent="Exhibits"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, -7.5)
+script = ExtResource("2_interactable")
+prompt_text = "Amati Torus Emas"
+exhibit_title = "Torus Emas: Siklus Keabadian"
+exhibit_description = "Patung logam mulia berbentuk lingkaran torus dengan permukaan berkilau sempurna. Merepresentasikan konsep siklus waktu yang tiada awal dan tiada akhir."
+
+[node name="PedestalMesh" type="MeshInstance3D" parent="Exhibits/Sculpture1_Torus"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("Mesh_PedestalSquare")
+
+[node name="TorusMesh" type="MeshInstance3D" parent="Exhibits/Sculpture1_Torus"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.5, 0.5, -0.707107, 0.5, 0.5, 0.707107, 0, 1.8, 0)
+mesh = SubResource("Mesh_GoldTorus")
+
+[node name="Collision" type="CollisionShape3D" parent="Exhibits/Sculpture1_Torus"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+shape = SubResource("Shape_PedestalSquare")
+
+[node name="Sculpture2_Chrome" type="StaticBody3D" parent="Exhibits"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, -13.5)
+script = ExtResource("2_interactable")
+prompt_text = "Amati Keseimbangan Krom"
+exhibit_title = "Keseimbangan Kromatik Tiga Titik"
+exhibit_description = "Bola kromium reflektif dengan tingkat kemurnian optik tinggi. Merefleksikan seluruh ruangan museum sekaligus menjadi metafora introspeksi diri bagi para pengamatnya."
+
+[node name="PedestalMesh" type="MeshInstance3D" parent="Exhibits/Sculpture2_Chrome"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("Mesh_PedestalSquare")
+
+[node name="SphereMesh" type="MeshInstance3D" parent="Exhibits/Sculpture2_Chrome"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+mesh = SubResource("Mesh_ChromeSphere")
+
+[node name="Collision" type="CollisionShape3D" parent="Exhibits/Sculpture2_Chrome"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+shape = SubResource("Shape_PedestalSquare")
+
+[node name="Sculpture3_Obsidian" type="StaticBody3D" parent="Exhibits"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, -19.5)
+script = ExtResource("2_interactable")
+prompt_text = "Amati Piramida Obsidian"
+exhibit_title = "Piramida Obsidian dari Lembah Sunyi"
+exhibit_description = "Dipahat dari satu bongkahan utuh kaca vulkanik hitam (obsidian). Ditemukan di situs kuil purba yang terkubur pasir selama lebih dari dua puluh abad."
+
+[node name="PedestalMesh" type="MeshInstance3D" parent="Exhibits/Sculpture3_Obsidian"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("Mesh_PedestalSquare")
+
+[node name="PyramidMesh" type="MeshInstance3D" parent="Exhibits/Sculpture3_Obsidian"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+mesh = SubResource("Mesh_ObsidianPyramid")
+
+[node name="Collision" type="CollisionShape3D" parent="Exhibits/Sculpture3_Obsidian"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+shape = SubResource("Shape_PedestalSquare")
+
+[node name="Sanctuary_StarRelic" type="StaticBody3D" parent="Exhibits"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21.5)
+script = ExtResource("2_interactable")
+prompt_text = "Amati Fragmen Bintang"
+exhibit_title = "Fragmen Bintang (Starlight Relic)"
+exhibit_description = "Bongkahan intan meteorit luar angkasa yang memancarkan kehangatan cahaya fajar keemasan. Ini merupakan koleksi paling berharga di museum ini yang diletakkan di panggung kehormatan utama."
+
+[node name="PedestalMesh" type="MeshInstance3D" parent="Exhibits/Sanctuary_StarRelic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+mesh = SubResource("Mesh_PedestalCenter")
+
+[node name="StarMesh" type="MeshInstance3D" parent="Exhibits/Sanctuary_StarRelic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0, 0)
+mesh = SubResource("Mesh_StarRelic")
+
+[node name="Collision" type="CollisionShape3D" parent="Exhibits/Sanctuary_StarRelic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+shape = SubResource("Shape_PedestalCenter")
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 6.0)
